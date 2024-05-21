@@ -217,11 +217,9 @@ input{
 }
 `;
 export const FormBookingItem = styled.div`
-position: relative;
-
 img{
   height: 20px;
-  position: absolute;
+  position: relative;
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
@@ -257,6 +255,31 @@ div{
   gap: 10px;
   flex-direction: column;
 
+  button{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    img{
+      height: 20px;
+      width: 20px;
+    }
+  }
+}
+
+img{
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+div{
+  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+
 }
 `;
 
@@ -264,8 +287,6 @@ export const FormImage = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 10px;
-  margin-left: 10px;
-  position: none !important; 
   `;
 
 export const ErrorMessage = styled.p`

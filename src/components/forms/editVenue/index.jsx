@@ -41,12 +41,13 @@ export default function EditVenueForm() {
       </FormItem>
       <h3>Images</h3>
       <FormImageContainer>
-        {media.map((img) => {
+        {media.map((img, index) => {
           return (
-            <><FormImage key={venue.name + img.index} src={img.url} alt={venue.name} />
-              <input placeholder="image url"></input>
-            </>
-          )
+            <React.Fragment key={venue.name + index}>
+              <FormImage src={img.url} alt={venue.name} />
+              <input placeholder="image url" />
+            </React.Fragment>
+          );
         })}
         <button>Add image</button>
       </FormImageContainer>

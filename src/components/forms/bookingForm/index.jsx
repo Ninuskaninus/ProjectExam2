@@ -13,7 +13,6 @@ export default function BookingForm({ venue }) {
     venueId: id,
   });
   const [totalPrice, setTotalPrice] = useState(0);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setBookingData({
@@ -37,7 +36,7 @@ export default function BookingForm({ venue }) {
       const days = (dateTo - dateFrom) / (1000 * 60 * 60 * 24);
       setTotalPrice(days * venue.price);
     }
-  }, []);
+  }, [bookingData.dateFrom, bookingData.dateTo, venue.price]);
 
   return (
     <>
