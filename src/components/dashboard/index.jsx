@@ -4,6 +4,7 @@ import {DashboardLogout, DashboardBottom, DashboardItem, DashboardMenu, Dashboar
 import { Link } from "react-router-dom";
 
 export default function Dashboard() {
+
   const handleDashboard = () => {
     const dashboard = document.getElementById("dashboardcontainer");
     dashboard.classList.toggle("active");
@@ -15,8 +16,6 @@ export default function Dashboard() {
     const dashboard = document.getElementById("dashboardcontainer");
     dashboard.classList.remove("active");
   }
-
-
 
   return (
     <DashboardContainer >

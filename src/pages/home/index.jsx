@@ -6,9 +6,6 @@ import EditProfile from "../../components/modals/editProfile";
 
 
 export default async function Home() {
-  const token = localStorage.getItem("token");
-
-
 
   return (
     <PageContainer>
