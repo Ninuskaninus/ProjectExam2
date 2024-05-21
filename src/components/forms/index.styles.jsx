@@ -51,6 +51,11 @@ label{
   top: 10px;
   color: var(--detail);
   font-size: 0.7rem;
+
+  &.error{
+    color: var(--error);
+  
+  }
 }
 `;
 
@@ -249,5 +254,11 @@ img{
   margin-left: 10px;
   background-color: var(--detail);
 }
+`;
+
+export const ErrorMessage = styled.p`
+  color: var(--error);
+  font-size: 1rem;
+  margin: 10px 0;
 `;
 

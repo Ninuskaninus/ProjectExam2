@@ -10,6 +10,7 @@ export default function Navigation() {
 
   const handleLogout = () => {
     localStorage.clear();
+    window.location.reload();
   }
 
   return (
@@ -21,17 +22,17 @@ export default function Navigation() {
             <h1>HOLIDAZE</h1>
           </div>
         </Link>
-        {token ? (
-          <Link to="/login">
-            <button>
-              <p>Log in</p>
-            </button>
-          </Link>
-        ) : (
-            <button onClick={handleLogout}>
-              <p>Log out</p>
-            </button>
-        )}
+      {token ? (
+        <button onClick={handleLogout}>
+          <p>Log out</p>
+        </button>
+      ) : (
+        <Link to="/login">
+          <button>
+            <p>Log in</p>
+          </button>
+        </Link>
+      )}
       </NavContent>
     </Nav>
       {location.pathname === "/" && (
