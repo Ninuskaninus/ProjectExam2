@@ -23,6 +23,9 @@ import Password from "./assets/password_white.png";
 import Mail from "./assets/mail_white.png";
 import UserId from "./assets/id_white.png";
 import Close from "./assets/close.png";
+import PasswordError from "./assets/password_red.png";
+import EmailError from "./assets/mail_red.png";
+import UserError from "./assets/id_red.png";
 
 
 const Icons = {
@@ -167,6 +170,24 @@ const Icons = {
   Close: () => {
     return (
       <img src={Close} alt="Close icon" name="Close" role="presentation" />
+    )
+  },
+
+  PasswordError: () => {
+    return (
+      <img src={PasswordError} alt="Password error icon" name="Password error" role="presentation" />
+    )
+  },
+
+  EmailError: () => {
+    return (
+      <img src={EmailError} alt="Email error icon" name="Email error" role="presentation" />
+    )
+  },
+
+  UserError: () => {
+    return (
+      <img src={UserError} alt="User error icon" name="User error" role="presentation" />
     )
   }
 
