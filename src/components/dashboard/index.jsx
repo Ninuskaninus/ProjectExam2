@@ -1,9 +1,8 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import Icons from "../../images/index.jsx";
 import {DashboardLogout, DashboardBottom, DashboardItem, DashboardMenu, DashboardTop, DashboardContainer, DashboardBtn, DashboardContent} from "./index.styles";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../contexts/provider";
-
 
 export default function Dashboard() {
   const { setSelectedCategory, profile } = useContext(AppContext);
