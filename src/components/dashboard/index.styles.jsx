@@ -112,6 +112,16 @@ img{
   height: 20px;
   margin-right: 10px;
 }
+
+&.disabled{
+  color: var(--lines);
+  pointer-events: none;
+
+  span{
+    color: var(--lines);
+  
+  }
+}
 `;
 
 export const DashboardBottom = styled.div`

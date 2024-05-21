@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Navigation from "../navigation";
 import Footer from "../footer";
 import Dashboard from "../dashboard";
-import {Body} from "./index.styles";
+import { Body } from "./index.styles";
 
 export default function Layout({ children }) {
   const location = useLocation();

@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Icons from "../../images/index.jsx";
 import {DashboardLogout, DashboardBottom, DashboardItem, DashboardMenu, DashboardTop, DashboardContainer, DashboardBtn, DashboardContent} from "./index.styles";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../contexts/provider";
+import Loader from "../loader/index.jsx";
 
 export default function Dashboard() {
+  const { setSelectedCategory, profile } = useContext(AppContext);
+  const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("token");
+
   const handleDashboard = () => {
     const dashboard = document.getElementById("dashboardcontainer");
     dashboard.classList.toggle("active");
@@ -16,6 +22,12 @@ export default function Dashboard() {
     dashboard.classList.remove("active");
   }
 
+    let noBookings = profile.bookings && profile.bookings.length === 0;
+  let noVenues = profile.venues && profile.venues.length === 0;
+  
+  if (!token) {
+    return null;
+  }
 
 
   return (
@@ -25,22 +37,30 @@ export default function Dashboard() {
       </DashboardBtn>
       <DashboardContent id="dashboardcontainer">
         <DashboardTop>
-          <Icons.PlaceholderAvatar />
-          <h3>Username</h3>
+          {profile.avatar.url || "" ? <img src={profile.avatar.url} alt="avatar" /> : <Icons.PlaceholderAvatar />}
+          <h3>{profile.name}</h3>
         </DashboardTop>
         <DashboardMenu>
           <h2>Dashboard</h2>
-          <DashboardItem>
+          <DashboardItem
+            onClick={() => setSelectedCategory("bookings")}
+            className={noBookings ? 'disabled' : ''}
+            disabled={noBookings}
+          >
             <Icons.Calendar />
             <p>My bookings</p>
-            <span>(10)</span>
+            <span>({profile.bookings.length || 0})</span>
           </DashboardItem>
-          <DashboardItem>
+          <DashboardItem
+            onClick={() => setSelectedCategory("myVenues")}
+            className={noVenues ? 'disabled' : ''}
+            disabled={noVenues}
+          >
             <Icons.House />
             <p>My venues</p>
-            <span>(5)</span>
+            <span>({profile.venues.length || 0})</span>
           </DashboardItem>
-          <DashboardItem>
+          <DashboardItem onClick={() => setSelectedCategory("all")}>
             <Icons.Cards />
             <p>All Venues</p>
           </DashboardItem>
