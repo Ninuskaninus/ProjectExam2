@@ -19,12 +19,23 @@ const { venues, myVenues, bookings, selectedCategory, loading } = useContext(App
   } else {
     displayedVenues = venues;
   }
+
+  const urlHandler = (venue) => {
+    if (selectedCategory === "bookings") {
+      return `/venue/${venue.id}`;
+    } else if (selectedCategory === "myVenues") {
+      return `/myvenues/${venue.id}`;
+    } else {
+      return `/venue/${venue.id}`;
+    }
+  }
+
   
     return (
       <>
         {displayedVenues.map((venue) => {
           return (
-              <Link key={venue.id} to={`/venue/${venue.id}`}>
+              <Link key={venue.id} to={urlHandler(venue)}>
               <Card >
                 <Image>
                   <Location>

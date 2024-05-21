@@ -247,18 +247,31 @@ h3{
 `;
 
 export const FormImageContainer = styled.div`
-img{
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+
+div{
+  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+
+}
+`;
+
+export const FormImage = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 10px;
   margin-left: 10px;
-  background-color: var(--detail);
-}
-`;
+  position: none !important; 
+  `;
 
 export const ErrorMessage = styled.p`
   color: var(--error);
   font-size: 1rem;
   margin: 10px 0;
 `;
+
 

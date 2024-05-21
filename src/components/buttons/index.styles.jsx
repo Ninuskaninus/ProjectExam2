@@ -22,3 +22,16 @@ height: 60px;
 border-radius: 30px;
 background-color: var(--detail);
 `;
+
+export const BtnDelete = styled.button`
+background-color: var(--error);
+color: var(--primary);
+height: 40px;
+width: 100px;
+border-radius: 20px;
+`;
+
+export const BtnEdit = styled(BtnDelete)`
+background-color: var(--detail);
+color: var(--white);
+`;

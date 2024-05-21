@@ -14,6 +14,7 @@ export default function AppProvider({ children }) {
   const [bookings, setBookings] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
 
+
   useEffect(() => {
     if (token) {
       const fetchData = async () => {
@@ -36,7 +37,7 @@ export default function AppProvider({ children }) {
     const fetchData = async () => {
       try {
         const venuesData = await getVenues();
-        setVenues(venuesData);
+        setVenues(venuesData); 
       } catch (error) {
         console.error("Error fetching venues:", error);
       } finally {
