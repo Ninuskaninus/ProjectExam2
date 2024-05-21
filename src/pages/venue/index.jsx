@@ -1,30 +1,21 @@
-import React, {useState, useEffect} from "react";
+import React, {useContext} from "react";
 import { PageContainer, PageContent } from "../index.styles";
 import { VenueFormContainer, VenueOwnerBio, VenueOwner, VenueDescription, VenueIcons, VenueContainer, VenueHead, CarouselContainer, VenueTitle } from "./index.styles";
-import getVenues from "../../js/get/getVenues";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/loader";
 import Icons from "../../images";
 import VenueCarousel from "../../components/carousel";
 import BookingForm from "../../components/forms/bookingForm";
+import { AppContext } from "../../contexts/provider";
 
 
 export default function Venue() {
-  const [venue, setVenue] = useState([]);
-  const [loading, setLoading] = useState(true);
   const { id } = useParams();
-
-  useEffect(() => {
-    getVenues().then((data) => {
-      data = data.filter((venue) => venue.id === id);
-      setVenue(data[0]);
-      setLoading(false);
-    });
-  }, [id]);
-
+  const { venues, loading } = useContext(AppContext);
   if (loading) {
     return <Loader />;
   }
+  const venue = venues.find((venue) => venue.id === id);
 
   return (
     <PageContainer>

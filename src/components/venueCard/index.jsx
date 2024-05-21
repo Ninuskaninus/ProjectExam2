@@ -1,28 +1,28 @@
-import React, {useState, useEffect} from "react";
-import getVenues from "../../js/get/getVenues";
+import React, {useContext} from "react";
 import Loader from "../loader";
 import { Price, Text, Location, CardBody, Card, Image, Icon } from "./index.styles";
 import Icons from "../../images";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../contexts/provider";
 
 export default function VenueCard() {
-  const [venues, setVenues] = useState([]);
-  const [loading, setLoading] = useState(true);
+const { venues, myVenues, bookings, selectedCategory, loading } = useContext(AppContext);
+  if (loading) {
+    return <Loader />;
+  }
 
-    useEffect(() => {
-      getVenues().then((data) => {
-        setVenues(data);
-        setLoading(false);
-      });
-    }, []);
-
-    if (loading) {
-      return <Loader />;
+    let displayedVenues = [];
+  if (selectedCategory === "bookings") {
+    displayedVenues = bookings.map((booking) => booking.venue);
+  } else if (selectedCategory === "myVenues") {
+    displayedVenues = myVenues;
+  } else {
+    displayedVenues = venues;
   }
   
     return (
       <>
-        {venues.map((venue) => {
+        {displayedVenues.map((venue) => {
           return (
               <Link key={venue.id} to={`/venue/${venue.id}`}>
               <Card >
