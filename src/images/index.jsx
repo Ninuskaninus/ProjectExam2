@@ -26,6 +26,7 @@ import Close from "./assets/close.png";
 import PasswordError from "./assets/password_red.png";
 import EmailError from "./assets/mail_red.png";
 import UserError from "./assets/id_red.png";
+import Delete from "./assets/delete.png";
 
 
 const Icons = {
@@ -189,7 +190,13 @@ const Icons = {
     return (
       <img src={UserError} alt="User error icon" name="User error" role="presentation" />
     )
-  }
+  },
+
+  Delete: () => {
+    return (
+      <img src={Delete} alt="Delete icon" name="Delete" role="presentation" />
+    )
+  },
 
 
 }

@@ -6,6 +6,7 @@ import Venue from "./pages/venue";
 import Login from "./pages/login";
 import CreateAccount from "./pages/createaccount";
 import AddVenue from "./pages/addVenue";
+import MyVenues from "./pages/myVenues";
 import AppProvider from "./contexts/provider";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/createaccount" element={<CreateAccount />} />
             <Route path="/addvenue" element={<AddVenue />} />
+            <Route path="/myvenues/:id" element={<MyVenues />} />
           </Routes>
         </Layout>
       </AppProvider>
