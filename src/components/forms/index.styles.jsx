@@ -7,7 +7,11 @@ gap: 20px;
 margin: 50px 0;
 width: 100%;
 max-width: 500px;
-hei
+
+&.row{
+  flex-direction: row;
+  gap: 10px;
+}
 `;
 
 export const FormItem = styled.div`
@@ -30,6 +34,8 @@ input, textarea{
   padding-left: 10px;
   padding-bottom: 10px;
   border-radius: 10px;
+
+  
 
   &:focus{
     outline: none;
@@ -60,11 +66,14 @@ label{
   top: 10px;
   color: var(--detail);
   font-size: 0.7rem;
+  z-index: 1;
 
   &.error{
     color: var(--error);
   
   }
+
+
 }
 `;
 
@@ -126,67 +135,13 @@ input{
 `;
 
 
-
-export const FormBooking = styled.form`
-display: flex;
-gap: 10px;
-flex-wrap: wrap;
-
-input{
-  background-color: var(--secondary);
-  border: none;
-  height: 60px;
-  width: 180px;
-  color: var(--white);
-  font-size: 1.2rem;
-  border-radius: 30px;
-  padding: 0 50px;
-
-
-  &:focus{
-    outline: none;
-  } 
-
-  &::placeholder{
-    color: var(--tertiary);
-  }
-
-  &[type="date"] {
-    &::-webkit-calendar-picker-indicator {
-      background: transparent;
-      bottom: 0;
-      color: transparent;
-      cursor: pointer;
-      height: auto;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: auto;
-      z-index: 1
-    }
-  }
-}
-`;
-export const FormBookingItem = styled.div`
-img{
-  height: 20px;
-  position: relative;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  
-}
-`;
-
-
 export const TotalPrice = styled.div`
 display: flex;
 justify-content: space-between;
-margin: 20px 0;
+margin: 40px 0;
 border-top: 2px solid var(--detail);
 border-bottom: 2px solid var(--detail);
-padding: 10px 0;
+padding: 20px 0;
 align-items: center;
 flex-wrap: wrap;
 gap: 10px;

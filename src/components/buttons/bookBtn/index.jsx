@@ -1,8 +1,8 @@
 import React from "react";
 import {BtnBook} from "../index.styles";
 
-export default function BookBtn() {
+export default function BookBtn({onClick}) {
   return (
-    <BtnBook>Book now!</BtnBook>
+    <BtnBook type="button" onClick={onClick}>Book now!</BtnBook>
   );
 }
