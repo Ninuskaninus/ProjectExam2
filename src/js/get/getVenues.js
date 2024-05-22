@@ -1,6 +1,6 @@
 export default async function getVenues() {
   const url =
-    "https://v2.api.noroff.dev/holidaze/venues/?_owner=true&_bookings=true";
+    "https://v2.api.noroff.dev/holidaze/venues?_owner=true&_bookings=true&sort=created";
   const options = {
     method: "GET",
     headers: {

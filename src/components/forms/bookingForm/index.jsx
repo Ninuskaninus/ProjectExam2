@@ -13,6 +13,14 @@ export default function BookingForm({ venue }) {
     venueId: id,
   });
   const [totalPrice, setTotalPrice] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setBookingData({
+      ...bookingData,
+      venueId: id,
+    });
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
