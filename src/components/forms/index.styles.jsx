@@ -114,10 +114,11 @@ position: relative;
 display: flex;
 align-items: center;
 gap: 10px;
+padding: 0 10px;
 
 
 input{
-  background-color: var(--primary);
+  background-color: var(--secondary);
   border: none;
   height: 100%;
   width: 100%;
@@ -129,7 +130,8 @@ input{
   } 
 
   &::placeholder{
-    color: var(--tertiary);
+    color: var(--wildYonder);
+    font-size: 1rem;
   }
 }
 `;

@@ -35,3 +35,17 @@ export const BtnEdit = styled(BtnDelete)`
 background-color: var(--detail);
 color: var(--white);
 `;
+
+export const BtnHero = styled.button`
+background-color: var(--rose);
+color: var(--black);
+width: 300px;
+height: 80px;
+border-radius: 50px;
+font-size: 1.3rem;
+transition: 0.3s;
+
+&:hover{
+  font-size: 1.5rem;
+}
+`;

@@ -14,7 +14,6 @@ export const NavContent = styled.div`
 width: 100%;
 display: flex;
 max-width: 1200px;
-border-bottom: 1px solid var(--lines);
 justify-content: space-between;
 height: 120px;
 align-items: center;

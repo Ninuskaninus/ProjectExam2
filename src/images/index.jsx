@@ -27,6 +27,7 @@ import PasswordError from "./assets/password_red.png";
 import EmailError from "./assets/mail_red.png";
 import UserError from "./assets/id_red.png";
 import Delete from "./assets/delete.png";
+import Hero from "./assets/hero.jpg";
 
 
 const Icons = {
@@ -197,6 +198,12 @@ const Icons = {
       <img src={Delete} alt="Delete icon" name="Delete" role="presentation" />
     )
   },
+
+  Hero: () => {
+    return (
+      <img src={Hero} alt="Beautiful mountains in purple and pink sunset" name="Hero" role="presentation" />
+    )
+  }
 
 
 }

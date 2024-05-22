@@ -1,19 +1,23 @@
 import React from "react";
-import {PageCardContainer, PageHeader, PageContainer, PageContent} from "../index.styles";
+import {SearchContainer, PageContainer, PageContent, Dashboard, CardContainer} from "./index.styles";
 import VenueCard from "../../components/venueCard";
 import EditProfile from "../../components/modals/editProfile";
+import Hero from "../../components/hero";
+import SearchForm from "../../components/forms/searchform";
+
 
 export default function Home() {
   return (
     <PageContainer>
+      <Hero />
+      <SearchContainer>
+        <SearchForm />
+      </SearchContainer>
       <PageContent>
-        <EditProfile />
-        <PageHeader>
-          <h2>Browse venues</h2>
-        </PageHeader>
-        <PageCardContainer>
+        <Dashboard>Dashboard</Dashboard>
+        <CardContainer>
           <VenueCard />
-        </PageCardContainer>
+        </CardContainer>
       </PageContent>
     </PageContainer>
   );
