@@ -7,6 +7,7 @@ gap: 20px;
 margin: 50px 0;
 width: 100%;
 max-width: 500px;
+hei
 `;
 
 export const FormItem = styled.div`
@@ -18,7 +19,7 @@ display: flex;
 align-items: center;
 gap: 10px;
 
-input{
+input, textarea{
   background-color: var(--secondary);
   border: none;
   height: 100%;
@@ -37,6 +38,14 @@ input{
   &::placeholder{
     color: var(--tertiary);
   }
+}
+
+textarea{
+  min-height: 100px;
+  min-width: 100%;
+  padding-bottom: 10px;
+  padding-top: 40px;
+  margin-top: 20px;
 }
 
 img{
