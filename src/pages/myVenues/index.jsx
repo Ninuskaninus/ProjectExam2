@@ -8,7 +8,7 @@ import DeleteConfirm from "../../components/modals/deleteConfirm";
 import Icons from "../../images/index";
 import EditVenueBtn from "../../components/buttons/editBtn";
 import EditVenue from "../../components/modals/editVenue";
-import getMyVenue from "../../js/get/myVenue";
+import getMyVenue from "../../js/get/myVenue.js";
 import Loader from "../../components/loader";
 
 export default function MyVenues() {
