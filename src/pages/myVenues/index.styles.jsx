@@ -62,3 +62,30 @@ img{
   margin-right: 5px;
 }
 `;
+
+export const BookingContainer = styled.div`
+margin-top: 50px;
+background-color: var(--primary);
+padding: 20px;
+h2{
+  margin-bottom: 20px;
+}
+`;
+
+export const Bookings = styled.div`
+display: flex;
+gap: 20px;
+flex-direction: column;
+background-color: var(--secondary);
+padding: 10px;
+`;
+export const BookingItem = styled.div`
+display: flex;
+align-items: center;
+gap: 10px;
+img{
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+`;
