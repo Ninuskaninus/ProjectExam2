@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import getVenues from "../js/get/getVenues.js";
 import getProfile from "../js/get/profile.js";
+import searchVenue from "../js/get/searchVenue.js";
 import Loader from "../components/loader/index.jsx";
 
 export const AppContext = createContext();
@@ -12,6 +13,7 @@ export default function AppProvider({ children }) {
   const [venues, setVenues] = useState([]);
   const [myVenues, setMyVenues] = useState([]);
   const [bookings, setBookings] = useState([]);
+  const [searchedVenues, setSearchedVenues] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
@@ -36,7 +38,7 @@ export default function AppProvider({ children }) {
     const fetchData = async () => {
       try {
         const venuesData = await getVenues();
-        setVenues(venuesData); 
+        setVenues(venuesData);
       } catch (error) {
         console.error("Error fetching venues:", error);
       } finally {
@@ -46,12 +48,25 @@ export default function AppProvider({ children }) {
     fetchData();
   }, []);
 
+  const handleSearch = async (search) => {
+    try {
+      const results = await searchVenue(search);
+      setSearchedVenues(results);
+    } catch (error) {
+      console.error("Error searching venues:", error);
+    }
+  };
+
+  const clearSearchResults = () => {
+    setSearchedVenues([]);
+  };
+
   if (loading) {
     return <Loader />;
   }
 
   return (
-    <AppContext.Provider value={{ profile, venues, myVenues, bookings, selectedCategory, setSelectedCategory }}>
+    <AppContext.Provider value={{ profile, venues, myVenues, bookings, searchedVenues, selectedCategory, setSelectedCategory, handleSearch, clearSearchResults }}>
       {children}
     </AppContext.Provider>
   );
