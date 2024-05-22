@@ -14,8 +14,6 @@ export default function AppProvider({ children }) {
   const [bookings, setBookings] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
 
-
-
   useEffect(() => {
     if (token) {
       const fetchData = async () => {
