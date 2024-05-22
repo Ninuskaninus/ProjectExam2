@@ -39,7 +39,7 @@ export default function AddVenueForm() {
         media: [...prevState.media, newImage],
       }));
 
-      document.getElementById("imageurl").value = ""; // Clear input field
+      document.getElementById("imageurl").value = ""; 
     }
   };
 

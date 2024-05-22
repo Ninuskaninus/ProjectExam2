@@ -1,77 +1,153 @@
 import React, {useContext, useState} from "react";
-import {Form, FormItem, FormBtnContainer, FormImageContainer, FormImage} from "../index.styles";
+import {Form, FormItem, FormBtnContainer, FormImageContainer} from "../index.styles";
 import { AppContext } from "../../../contexts/provider";
 import { useParams } from "react-router-dom";
-import Icons from "../../../images";
+import FormBtn from "../../buttons/formBtn";
+import editVenue from "../../../js/put/editVenue.js";
+import Icons from "../../../images/index.jsx";
+import Loader from "../../loader";
 
 export default function EditVenueForm() {
   const { myVenues } = useContext(AppContext);
   const { id } = useParams();
   const venue = myVenues.find((venue) => venue.id === id);
-  const media = venue.media;
+  const [loading, setLoading] = useState(false);
+
   const [formElements, setFormElements] = useState({
     name: venue.name,
     description: venue.description,
     price: venue.price,
+    location: 
+      {
+        address: venue.location.address,
+        city: venue.location.city,
+        zip: venue.location.zip,
+        country: venue.location.country,
+        continent: venue.location.continent,
+      },
     maxGuests: venue.maxGuests,
-    media: {
-      url: "",
-      alt: "",
-    },
-
+    media: [...venue.media]
   });
+
+    const pushImage = () => {
+    const imageurl = document.getElementById("imageurl").value;
+    if (imageurl) {
+      const newImage = {
+        url: imageurl,
+        alt: "",
+      };
+
+      setFormElements((prevState) => ({
+        ...prevState,
+        media: [...prevState.media, newImage],
+      }));
+
+      document.getElementById("imageurl").value = ""; 
+    }
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    editVenue(id, formElements);
+    setLoading(false);
+  }
 
   return (
     <Form>
       <FormItem>
         <label>Venue Name</label>
-        <input type="text" />
+        <input
+          value={formElements.name}
+          onChange={(e) => setFormElements({...formElements, name: e.target.value})}
+          type="text" />
       </FormItem>
       <FormItem>
         <label>Description</label>
-        <input type="textarea" />
+        <textarea
+          value={formElements.description}
+          onChange={(e) => setFormElements({...formElements, description: e.target.value})}
+          type="text" />
       </FormItem>
       <FormItem>
         <label>Price</label>
-        <input type="number" />
+        <input
+          value={formElements.price}
+          onChange={(e) => setFormElements({...formElements, price: (e.target.value)})}
+          type="number" />
       </FormItem>
       <FormItem>
         <label>Max Guests</label>
-        <input type="number" />
+        <input
+          value={formElements.maxGuests}
+          onChange={(e) => setFormElements({...formElements, maxGuests: (e.target.value)})}
+          type="number" />
       </FormItem>
       <h3>Images</h3>
-      <FormImageContainer>
-        {media.map((img, index) => {
-          return (
-            <React.Fragment key={venue.name + index}>
-              <FormImage src={img.url} alt={venue.name} />
-              <input placeholder="image url" />
-            </React.Fragment>
-          );
-        })}
-        <button>Add image</button>
+        <FormItem>
+        <label htmlFor="imageurl">Image Url</label>
+        <input type="text" id="imageurl" />
+        <button type="button" onClick={pushImage}>
+          <Icons.Add />
+        </button>
+      </FormItem>
+      <FormImageContainer className="imageContainer">
+        {formElements.media.map((img, index) => (
+          <div key={`${img.url}-${index}`}>
+            <img src={img.url} alt={img.alt} />
+            <button
+              type="button"
+              onClick={() =>
+                setFormElements((prevState) => ({
+                  ...prevState,
+                  media: prevState.media.filter((_, i) => i !== index),
+                }))
+              }
+            >
+              <Icons.Close />
+            </button>
+          </div>
+        ))}
       </FormImageContainer>
       <h3>Location</h3>
       <FormItem>
         <label>Address</label>
-        <input type="text" />
+        <input
+          value={formElements.location.address}
+          onChange={(e) => setFormElements({...formElements, address: e.target.value})}
+          type="text" />
       </FormItem>
       <FormItem>
         <label>City</label>
-        <input type="text" />
+        <input
+          value={formElements.location.city}
+          onChange={(e) => setFormElements({...formElements, city: e.target.value})}
+          type="text" />
       </FormItem>
       <FormItem>
         <label>Zip</label>
-        <input type="text" />
+        <input
+          value={formElements.location.zip}
+          onChange={(e) => setFormElements({...formElements, zip: e.target.value})}
+          type="text" />
       </FormItem>
       <FormItem>
         <label>Country</label>
-        <input type="text" />
+        <input
+          value={formElements.location.country}
+          onChange={(e) => setFormElements({...formElements, country: e.target.value})}
+          type="text" />
       </FormItem>
       <FormItem>
         <label>Continent</label>
-        <input type="text" />
+        <input
+          value={formElements.location.continent}
+          onChange={(e) => setFormElements({...formElements, continent: e.target.value})}
+          type="text" />
       </FormItem>
+      <FormBtnContainer>
+        <FormBtn type="button" onClick={handleFormSubmit} Text="Save" />
+      </FormBtnContainer>
     </Form>
   );
 }
