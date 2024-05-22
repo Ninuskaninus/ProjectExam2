@@ -125,64 +125,7 @@ input{
 }
 `;
 
-export const FormFilter = styled.form`
-display: flex;
-gap: 10px;
 
-@media (max-width: 910px){
-  display:none;
-}
-`;
-
-export const FormFilterItem = styled.div`
-position: relative;
-display: flex;
-align-items: center;
-gap: 10px;
-
-input{
-border-radius: 30px;
-background-color: var(--primary);
-padding-left: 50px;
-padding-right: 10px;
-color: var(--white);
-border: none;
-width: 180px;
-height: 60px;
-font-size: 1rem;
-font-family: var(--mainFont);
-
-&::placeholder{
-  color: var(--white);
-}
-
-&:focus{
-  outline: none;
-}
-
-  &[type="date"] {
-      &::-webkit-calendar-picker-indicator {
-        background: transparent;
-        bottom: 0;
-        color: transparent;
-        cursor: pointer;
-        height: auto;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: auto;
-        z-index: 1
-      }
-    }
-}
-
-img{
-  height: 20px;
-  position: absolute;
-  left: 20px;
-}
-`;
 
 export const FormBooking = styled.form`
 display: flex;
