@@ -1,12 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Icons from "../../images/index.jsx";
 import {DashboardLogout, DashboardBottom, DashboardItem, DashboardMenu, DashboardTop, DashboardContainer, DashboardBtn, DashboardContent} from "./index.styles";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../contexts/provider";
+import Loader from "../loader/index.jsx";
 
 export default function Dashboard() {
   const { setSelectedCategory, profile } = useContext(AppContext);
+  const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   const handleDashboard = () => {
     const dashboard = document.getElementById("dashboardcontainer");
@@ -20,10 +30,10 @@ export default function Dashboard() {
     dashboard.classList.remove("active");
   }
 
-    let noBookings = profile.bookings && profile.bookings.length === 0;
+  let noBookings = profile.bookings && profile.bookings.length === 0;
   let noVenues = profile.venues && profile.venues.length === 0;
   
-  if (!token) {
+  if (!profile || !token) {
     return null;
   }
 
