@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
 height: 200px;
+background-color: var(--primary);
+margin-top: 50px;
 `;
 
 export const FooterContent = styled.div`
