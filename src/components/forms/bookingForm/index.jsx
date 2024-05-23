@@ -57,6 +57,7 @@ export default function BookingForm({ venue }) {
 
   return (
     <>
+      <h3>Book now!</h3>
       <Form className="row">
         <FormItem>
           <label>Date from</label>
@@ -106,7 +107,7 @@ export default function BookingForm({ venue }) {
         <h3>Total: {totalPrice} NOK </h3>
       </TotalPrice>
       <FormBtnContainer>
-        <BookBtn onClick={handleSubmit} />
+        <BookBtn Text="Book now!" onClick={handleSubmit} />
       </FormBtnContainer>
     </>
   );

@@ -21,11 +21,19 @@ export default async function addVenue(formElement) {
       alert("Venue added successfully");
       window.location.href = "/";
     } else {
-      console.error("Error response:", json);
-      alert(`Failed to add venue: ${json.message || "Unknown error"}`);
+      console.error("Error response:", {
+        status: response.status,
+        statusText: response.statusText,
+        body: json,
+      });
+      return json; 
     }
   } catch (error) {
-    console.error("Fetch error:", error.message, error);
-    alert(`Failed to add venue: ${error.message}`);
+    console.error("Fetch error:", {
+      message: error.message,
+      name: error.name,
+      stack: error.stack,
+    });
+    return { message: error.message }; 
   }
 }

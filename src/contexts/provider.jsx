@@ -8,8 +8,9 @@ export const AppContext = createContext();
 
 export default function AppProvider({ children }) {
   const token = localStorage.getItem("token");
-  const [profile, setProfile] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [profile, setProfile] = useState(null);
+  const [loadingProfile, setLoadingProfile] = useState(!!token); 
+  const [loadingVenues, setLoadingVenues] = useState(true);
   const [venues, setVenues] = useState([]);
   const [myVenues, setMyVenues] = useState([]);
   const [bookings, setBookings] = useState([]);
@@ -17,35 +18,39 @@ export default function AppProvider({ children }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const profileData = await getProfile();
+        setProfile(profileData);
+        setMyVenues(profileData.venues || []);
+        setBookings(profileData.bookings || []);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      } finally {
+        setLoadingProfile(false);
+      }
+    };
+
     if (token) {
-      const fetchData = async () => {
-        try {
-          const profileData = await getProfile();
-          setProfile(profileData);
-          setMyVenues(profileData.venues || []);
-          setBookings(profileData.bookings || []);
-        } catch (error) {
-          console.error("Error fetching profile:", error);
-        } finally {
-          setLoading(false);
-        }
-      };
-      fetchData();
+      fetchProfileData();
+    } else {
+      setLoadingProfile(false);
     }
   }, [token]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchVenuesData = async () => {
       try {
         const venuesData = await getVenues();
         setVenues(venuesData);
       } catch (error) {
         console.error("Error fetching venues:", error);
       } finally {
-        setLoading(false);
+        setLoadingVenues(false);
       }
     };
-    fetchData();
+
+    fetchVenuesData();
   }, []);
 
   const handleSearch = async (search) => {
@@ -61,7 +66,7 @@ export default function AppProvider({ children }) {
     setSearchedVenues([]);
   };
 
-  if (loading) {
+  if (loadingProfile || loadingVenues) {
     return <Loader />;
   }
 

@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {Form, FormItem, FormBtnContainer} from "../index.styles";
+import React, {useState} from "react";
+import {EditForm, EditFormItem, FormBtnContainer} from "../index.styles";
 import FormBtn from "../../buttons/formBtn";
 import editProfile from "../../../js/put/editprofile";
 
@@ -19,8 +19,8 @@ export default function EditProfileForm() {
 
 
   return (
-    <Form>
-      <FormItem>
+    <EditForm id="editProfileForm">
+      <EditFormItem>
         <label htmlFor="avatar">Avatar Url</label>
         <input
           onChange={(e) => {
@@ -30,8 +30,8 @@ export default function EditProfileForm() {
           type="text"
           name="avatar"
           id="avatar" />
-      </FormItem>
-      <FormItem>
+      </EditFormItem>
+      <EditFormItem>
         <label htmlFor="bio">Bio</label>
         <textarea
           onChange={(e) => {
@@ -41,10 +41,10 @@ export default function EditProfileForm() {
           type="textarea"
           name="bio"
           id="bio" />
-      </FormItem>
+      </EditFormItem>
       <FormBtnContainer>
         <FormBtn onClick={handleFormSubmit} Text="Save" />
       </FormBtnContainer>
-    </Form>
+    </EditForm>
   );
 }

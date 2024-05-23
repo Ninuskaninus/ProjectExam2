@@ -1,12 +1,10 @@
 import React from "react";
 import Icons from "../../images";
-import { Link, useLocation } from "react-router-dom";
-import { NavContent, NavSearch, Nav } from "./index.styles";
-import SearchForm from "../forms/searchform";
+import { Link } from "react-router-dom";
+import { NavContent, Nav } from "./index.styles";
 
 export default function Navigation() {
   const token = localStorage.getItem("token");
-  const location = useLocation();
 
   const handleLogout = () => {
     localStorage.clear();
@@ -14,12 +12,12 @@ export default function Navigation() {
   }
 
   return (
-    <><Nav>
+    <Nav>
       <NavContent>
         <Link to="/">
           <div>
             <Icons.Logo />
-            <h1>HOLIDAZE</h1>
+            <h3>HOLIDAZE</h3>
           </div>
         </Link>
       {token ? (
@@ -35,13 +33,6 @@ export default function Navigation() {
       )}
       </NavContent>
     </Nav>
-      {location.pathname === "/" && (
-        <NavSearch>
-        <div>
-          <SearchForm />
-        </div>
-      </NavSearch>
-      )}
-</>
+
   );
 }

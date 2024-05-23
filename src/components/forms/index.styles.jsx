@@ -8,6 +8,8 @@ margin: 50px 0;
 width: 100%;
 max-width: 500px;
 
+
+
 &.row{
   flex-direction: row;
   gap: 10px;
@@ -21,10 +23,10 @@ height: 60px;
 position: relative;
 display: flex;
 align-items: center;
-gap: 10px;
+gap: 5px;
 
-input, textarea{
-  background-color: var(--secondary);
+input, textarea {
+  background-color: var(--black);
   border: none;
   height: 100%;
   width: 100%;
@@ -35,46 +37,48 @@ input, textarea{
   padding-bottom: 10px;
   border-radius: 10px;
 
-  
-
-  &:focus{
+  &:focus {
     outline: none;
   }
 
-  &::placeholder{
-    color: var(--tertiary);
+  &::placeholder {
+    color: var(--primary);
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--black) inset !important;
+    box-shadow: 0 0 0 1000px var(--black) inset !important;
+    -webkit-text-fill-color: var(--white) !important;
+    caret-color: var(--white) !important;
   }
 }
 
-textarea{
-  min-height: 100px;
+textarea {
   min-width: 100%;
   padding-bottom: 10px;
   padding-top: 40px;
-  margin-top: 20px;
 }
 
-img{
+img {
   height: 20px;
   position: absolute;
   right: 20px;
 }
 
-label{
+label {
   position: absolute;
   left: 10px;
   top: 10px;
-  color: var(--detail);
+  color: var(--rose);
   font-size: 0.7rem;
   z-index: 1;
 
-  &.error{
+  &.error {
     color: var(--error);
-  
   }
-
-
-}
 `;
 
 export const FormBtnContainer = styled.div`
@@ -92,11 +96,11 @@ export const FormItemCheckbox = styled.div`
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: solid var(--detail) 2px;
+    border: solid var(--rose) 2px;
     cursor: pointer;
 
     &:checked {
-      background: var(--detail);
+      background: var(--rose);
     }
   }
 
@@ -114,10 +118,11 @@ position: relative;
 display: flex;
 align-items: center;
 gap: 10px;
+padding: 0 10px;
 
 
 input{
-  background-color: var(--primary);
+  background-color: var(--secondary);
   border: none;
   height: 100%;
   width: 100%;
@@ -129,7 +134,8 @@ input{
   } 
 
   &::placeholder{
-    color: var(--tertiary);
+    color: var(--wildYonder);
+    font-size: 1rem;
   }
 }
 `;
@@ -139,8 +145,8 @@ export const TotalPrice = styled.div`
 display: flex;
 justify-content: space-between;
 margin: 40px 0;
-border-top: 2px solid var(--detail);
-border-bottom: 2px solid var(--detail);
+border-top: 2px solid var(--rose);
+border-bottom: 2px solid var(--rose);
 padding: 20px 0;
 align-items: center;
 flex-wrap: wrap;
@@ -199,7 +205,63 @@ export const FormImage = styled.img`
 export const ErrorMessage = styled.p`
   color: var(--error);
   font-size: 1rem;
-  margin: 10px 0;
+  margin: 5px 0;
 `;
 
+export const EditForm = styled.form`
+flex-direction: column;
+gap: 20px;
+display: none;
+
+&.show {
+  display: flex;
+}
+`;
+
+export const EditFormItem = styled.div`
+position: relative;
+
+label{
+  color: var(--rose);
+  font-size: 0.7rem;
+  margin-bottom: 5px;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+
+}
+
+input, textarea {
+  background-color: var(--black);
+  border: none;
+  width: 100%;
+  color: var(--white);
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 10px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: var(--primary);
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--black) inset !important;
+    box-shadow: 0 0 0 1000px var(--black) inset !important;
+    -webkit-text-fill-color: var(--white) !important;
+    caret-color: var(--white) !important;
+  }
+}
+
+textarea {
+  max-width: 200px;
+  min-width: 100%;
+}
+`;
 
