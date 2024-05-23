@@ -13,7 +13,6 @@ export default function EditVenueForm() {
   const { id } = useParams();
   const venue = myVenues.find((venue) => venue.id === id);
   const [loading, setLoading] = useState(false);
-
   const [formElements, setFormElements] = useState({
     name: venue.name,
     description: venue.description,
@@ -35,6 +34,10 @@ export default function EditVenueForm() {
       pets: venue.meta.pets,
     }
   });
+
+    if (loading) {
+    return <Loader />;
+  }
 
     const pushImage = () => {
     const imageurl = document.getElementById("imageurl").value;
