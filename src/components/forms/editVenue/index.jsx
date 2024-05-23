@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {Form, FormItem, FormBtnContainer, FormImageContainer} from "../index.styles";
+import {Form, FormItem, FormBtnContainer, FormImageContainer, FormItemCheckbox} from "../index.styles";
 import { AppContext } from "../../../contexts/provider";
 import { useParams } from "react-router-dom";
 import FormBtn from "../../buttons/formBtn";
@@ -27,7 +27,13 @@ export default function EditVenueForm() {
         continent: venue.location.continent,
       },
     maxGuests: venue.maxGuests,
-    media: [...venue.media]
+    media: [...venue.media],
+    meta: {
+      wifi: venue.meta.wifi,
+      parking: venue.meta.parking,
+      breakfast: venue.meta.breakfast,
+      pets: venue.meta.pets,
+    }
   });
 
     const pushImage = () => {
@@ -94,7 +100,7 @@ export default function EditVenueForm() {
           onChange={(e) => setFormElements({...formElements, maxGuests: Number(e.target.value)})}
           type="number" />
       </FormItem>
-      <h3>Images</h3>
+      <h4>Images</h4>
         <FormItem>
         <label htmlFor="imageurl">Image Url</label>
         <input type="text" id="imageurl" />
@@ -120,7 +126,40 @@ export default function EditVenueForm() {
           </div>
         ))}
       </FormImageContainer>
-      <h3>Location</h3>
+      <h4>Ammenitites</h4>
+      <FormItemCheckbox>
+        <input
+          type="checkbox"
+          checked={formElements.meta.wifi}
+          onChange={(e) => setFormElements({ ...formElements, meta: { ...formElements.meta, wifi: e.target.checked } })}
+        />
+        <label>Wifi</label>
+      </FormItemCheckbox>
+      <FormItemCheckbox>
+        <input
+          type="checkbox"
+          checked={formElements.meta.parking}
+          onChange={(e) => setFormElements({ ...formElements, meta: { ...formElements.meta, parking: e.target.checked } })}
+        />
+        <label>Parking</label>
+      </FormItemCheckbox>
+      <FormItemCheckbox>
+        <input
+          type="checkbox"
+          checked={formElements.meta.breakfast}
+          onChange={(e) => setFormElements({ ...formElements, meta: { ...formElements.meta, breakfast: e.target.checked } })}
+        />
+        <label>Breakfast</label>
+      </FormItemCheckbox>
+      <FormItemCheckbox>
+        <input
+          type="checkbox"
+          checked={formElements.meta.pets}
+          onChange={(e) => setFormElements({ ...formElements, meta: { ...formElements.meta, pets: e.target.checked } })}
+        />
+        <label>Pets</label>
+      </FormItemCheckbox>
+      <h4>Location</h4>
       <FormItem>
         <label>Address</label>
         <input value={formElements.location.address} onChange={(e) => handleLocationChange("address", e.target.value)} type="text" />

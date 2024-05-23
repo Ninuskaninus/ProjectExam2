@@ -12,16 +12,22 @@ export default function VenueCard() {
     return <Loader />;
   }
 
-  let displayedVenues = [];
+let displayedVenues = [];
   if (searchedVenues.length > 0) {
     displayedVenues = searchedVenues;
-  } else if (selectedCategory === "bookings") {
-    displayedVenues = bookings.map((booking) => booking.venue);
+} else if (selectedCategory === "bookings") {
+  displayedVenues = bookings.map((booking) => booking.venue);
+    const heading = document.getElementById("venueHeading");
+    heading.textContent = "My Bookings";
   } else if (selectedCategory === "myVenues") {
     displayedVenues = myVenues;
-  } else {
+    const heading = document.getElementById("venueHeading");
+    heading.textContent = "My Venues";
+} else {
     displayedVenues = venues;
-  }
+    const heading = document.getElementById("venueHeading");
+    heading.textContent = "All Venues";
+}
 
   const urlHandler = (venue) => {
     if (selectedCategory === "bookings") {
@@ -33,9 +39,10 @@ export default function VenueCard() {
     }
   };
 
-  return (
-    <>
-      {displayedVenues.map((venue) => {
+ return (
+  <>
+    {displayedVenues.length > 0 ? (
+      displayedVenues.map((venue) => {
         const booking = bookings.find(booking => booking.venue.id === venue.id);
         return (
           <Link className="cardLink" key={venue.id} to={urlHandler(venue)}>
@@ -66,7 +73,11 @@ export default function VenueCard() {
             </Card>
           </Link>
         );
-      })}
-    </>
-  );
+      })
+    ) : (
+      <p>No results found.</p>
+    )}
+  </>
+);
+
 }

@@ -2,6 +2,7 @@ import React from "react";
 import Icons from "../../images";
 import { Link } from "react-router-dom";
 import { NavContent, Nav } from "./index.styles";
+import LoginBtn from "../buttons/loginBtn";
 
 export default function Navigation() {
   const token = localStorage.getItem("token");
@@ -21,14 +22,10 @@ export default function Navigation() {
           </div>
         </Link>
       {token ? (
-        <button onClick={handleLogout}>
-          <p>Log out</p>
-        </button>
+        <LoginBtn Text="Log out" onClick={handleLogout}/>
       ) : (
         <Link to="/login">
-          <button>
-            <p>Log in</p>
-          </button>
+          <LoginBtn Text="Log in"/>
         </Link>
       )}
       </NavContent>

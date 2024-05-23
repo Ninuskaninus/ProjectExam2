@@ -24,6 +24,11 @@ border-radius: 30px;
 background-color: var(--rose);
 color: var(--black);
 font-weight: 700;
+transition: 0.3s;
+
+&:hover{
+  font-size: 1.2rem;
+}
 `;
 
 export const BtnDelete = styled.button`
@@ -33,11 +38,18 @@ background-color: var(--rose);
 color: var(--black);
 border-radius: 20px;
 font-weight: 700;
+transition: 0.3s;
+
+&:hover{
+  font-size: 1.2rem;
+}
+
 `;
 
 export const BtnEdit = styled(BtnDelete)`
 background-color: var(--wildYonder);
 color: var(--white);
+
 `;
 
 export const BtnHero = styled.button`
@@ -60,4 +72,21 @@ height: 55px;
 border-radius: 10px;
 color: var(--black);
 font-weight: 700;
+`;
+
+export const BtnLogin = styled.button`
+background-color: var(--rose);
+height: 50px;
+min-width: 100px;
+padding: 0 20px;
+border-radius: 30px;
+color: var(--black);
+font-weight: 700;
+transition: 0.3s;
+
+&:hover{
+  font-size: 1rem;
+}
+
+
 `;

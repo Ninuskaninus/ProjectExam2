@@ -36,6 +36,7 @@ input, textarea {
   padding-left: 10px;
   padding-bottom: 10px;
   border-radius: 10px;
+  font-size: 0.9rem;
 
   &:focus {
     outline: none;
@@ -60,6 +61,7 @@ textarea {
   min-width: 100%;
   padding-bottom: 10px;
   padding-top: 40px;
+  height: 500px;
 }
 
 img {
@@ -235,6 +237,7 @@ input, textarea {
   background-color: var(--black);
   border: none;
   width: 100%;
+  height: 60px;
   color: var(--white);
   font-size: 1.2rem;
   padding: 10px;
@@ -262,6 +265,7 @@ input, textarea {
 textarea {
   max-width: 200px;
   min-width: 100%;
+  min-height: 100px;
 }
 `;
 

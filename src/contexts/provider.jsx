@@ -53,14 +53,19 @@ export default function AppProvider({ children }) {
     fetchVenuesData();
   }, []);
 
-  const handleSearch = async (search) => {
-    try {
-      const results = await searchVenue(search);
-      setSearchedVenues(results);
-    } catch (error) {
-      console.error("Error searching venues:", error);
+const handleSearch = async (search) => {
+  try {
+    const results = await searchVenue(search);
+    if (results.length === 0) {
+      return setSearchedVenues([]);
     }
-  };
+    setSearchedVenues(results);
+  } catch (error) {
+    console.error("Error searching venues:", error);
+    setSearchedVenues([]);
+  }
+};
+
 
   const clearSearchResults = () => {
     setSearchedVenues([]);

@@ -26,6 +26,11 @@ export default function Dashboard() {
     dashboard.classList.toggle("show");
   }
 
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   return (
     <>
       <DashboardContainer>
@@ -69,7 +74,7 @@ export default function Dashboard() {
           </DashboardItem>
           <EditProfileForm />
           <DashboardFooter>
-            <DashboardItem>
+            <DashboardItem onClick={handleLogout}>
               <Icons.Logout />
               <p>Logout</p>
             </DashboardItem>
