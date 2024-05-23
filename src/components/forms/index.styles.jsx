@@ -61,7 +61,6 @@ textarea {
   min-width: 100%;
   padding-bottom: 10px;
   padding-top: 40px;
-  height: 500px;
 }
 
 img {

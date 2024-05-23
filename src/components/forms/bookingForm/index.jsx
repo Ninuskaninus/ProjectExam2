@@ -28,13 +28,13 @@ export default function BookingForm({ venue }) {
 
   useEffect(() => {
     if (startDate && endDate) {
-      setBooking({
-        ...booking,
+      setBooking((prevBooking) => ({
+        ...prevBooking,
         dateFrom: startDate.toISOString(),
         dateTo: endDate.toISOString(),
-      });
+      }));
     }
-  }, [startDate, endDate]);
+  }, [startDate, endDate, booking]);
 
   const bookedDates = venue.bookings.map((booking) => ({
     startDate: new Date(booking.dateFrom),

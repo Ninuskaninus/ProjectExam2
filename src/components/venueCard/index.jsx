@@ -12,6 +12,10 @@ export default function VenueCard() {
     return <Loader />;
   }
 
+  const isMyVenue = (venueId) => {
+    return myVenues.some((venue) => venue.id === venueId);
+  };
+
   let displayedVenues = [];
   if (searchedVenues.length > 0) {
     displayedVenues = searchedVenues;
@@ -26,7 +30,7 @@ export default function VenueCard() {
   const urlHandler = (venue) => {
     if (selectedCategory === "bookings") {
       return `/venue/${venue.id}`;
-    } else if (selectedCategory === "myVenues") {
+    } else if (isMyVenue(venue.id)) {
       return `/myvenues/${venue.id}`;
     } else {
       return `/venue/${venue.id}`;
