@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Form, FormItem, FormImageContainer, FormItemCheckbox, FormBtnContainer } from "../index.styles";
+import { ErrorMessage, Form, FormItem, FormImageContainer, FormItemCheckbox, FormBtnContainer } from "../index.styles";
 import FormBtn from "../../buttons/formBtn";
 import Icons from "../../../images";
 import addVenue from "../../../js/post/addVenue.js";
+import AddBtn from "../../buttons/addBtn/index.jsx";
 
 export default function AddVenueForm() {
   const [formElement, setFormElements] = useState({
@@ -26,6 +27,8 @@ export default function AddVenueForm() {
     },
   });
 
+  const [error, setError] = useState(null); // Add state for error messages
+
   const pushImage = () => {
     const imageurl = document.getElementById("imageurl").value;
     if (imageurl) {
@@ -43,9 +46,12 @@ export default function AddVenueForm() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addVenue(formElement);
+    const error = await addVenue(formElement);
+    if (error) {
+      setError(error); // Update error state if there's an error
+    }
   };
 
   const handleInputChange = (e) => {
@@ -96,7 +102,7 @@ export default function AddVenueForm() {
       </FormItem>
       <FormItem>
         <label htmlFor="description">Description</label>
-        <input
+        <textarea
           required
           type="text"
           id="description"
@@ -107,9 +113,7 @@ export default function AddVenueForm() {
       <FormItem>
         <label htmlFor="imageurl">Image Url</label>
         <input type="text" id="imageurl" />
-        <button type="button" onClick={pushImage}>
-          <Icons.Add />
-        </button>
+        <AddBtn onClick={pushImage}/>
       </FormItem>
       <FormImageContainer className="imageContainer">
         {formElement.media.map((img, index) => (
@@ -140,6 +144,7 @@ export default function AddVenueForm() {
           onChange={handleInputChange}
         />
       </FormItem>
+      {error && <ErrorMessage>Must be more than 1 and no more than 10.000</ErrorMessage>} 
       <FormItem>
         <label htmlFor="maxGuests">Max guests</label>
         <input
@@ -151,6 +156,7 @@ export default function AddVenueForm() {
           onChange={handleInputChange}
         />
       </FormItem>
+      {error && <ErrorMessage>Need to have room for one or more. And no more than 100</ErrorMessage>} 
       <h3>Ammenities</h3>
       {['parking', 'breakfast', 'wifi', 'pets'].map((amenity) => (
         <FormItemCheckbox key={amenity}>

@@ -15,7 +15,8 @@ export default function editVenue(id, formElements) {
   fetch(url, options)
     .then((response) => response.json())
     .then((data) => {
-      window.location.reload();
+      console.log(data);
+      window.location.reload(); 
     })
     .catch((error) => {
       console.error("Error:", error);

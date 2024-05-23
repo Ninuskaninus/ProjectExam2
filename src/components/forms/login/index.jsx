@@ -72,7 +72,7 @@ export default function LoginForm() {
       </FormItem>
       {error && <ErrorMessage>{error}</ErrorMessage>}
       <FormBtnContainer>
-        <FormBtn onClick={handleLogin} Text="Log in" />
+        <FormBtn id="loginBtn" onClick={handleLogin} Text="Log in" />
       </FormBtnContainer>
     </Form>
   );

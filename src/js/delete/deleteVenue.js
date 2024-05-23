@@ -14,6 +14,9 @@ export default async function deleteVenue(id) {
 
   try {
     const response = await fetch(url, options);
+    if (response.ok) {
+      window.location.href = "/";
+    }
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({})); // Handle case where response body is empty
@@ -22,9 +25,6 @@ export default async function deleteVenue(id) {
         `Failed to delete venue: ${errorData.message || "Unknown error"}`
       );
     }
-
-    window.location.href = "/";
-    window.location.reload();
   } catch (error) {
     console.error("Fetch error:", error.message);
   }

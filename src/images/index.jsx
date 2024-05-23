@@ -28,6 +28,8 @@ import EmailError from "./assets/mail_red.png";
 import UserError from "./assets/id_red.png";
 import Delete from "./assets/delete.png";
 import Hero from "./assets/hero.jpg";
+import BedPink from "./assets/bed_pink.png";
+import CalendarPink from "./assets/calendar_pink.png";
 
 
 const Icons = {
@@ -202,6 +204,18 @@ const Icons = {
   Hero: () => {
     return (
       <img src={Hero} alt="Beautiful mountains in purple and pink sunset" name="Hero" role="presentation" />
+    )
+  },
+
+  BedPink: () => {
+    return (
+      <img src={BedPink} alt="Pink bed icon" name="Pink bed" role="presentation" />
+    )
+  },
+
+  CalendarPink: () => {
+    return (
+      <img src={CalendarPink} alt="Pink calendar icon" name="Pink calendar" role="presentation" />
     )
   }
 

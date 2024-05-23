@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Loader from "../loader";
-import { Price, Text, Location, CardBody, Card, Image, Icon } from "./index.styles";
+import { Dates, Gradient, Price, CardBody, Card, Image } from "./index.styles";
 import Icons from "../../images";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../contexts/provider";
@@ -35,39 +35,38 @@ export default function VenueCard() {
 
   return (
     <>
-      {displayedVenues.map((venue) => (
-        <Link key={venue.id} to={urlHandler(venue)}>
-          <Card>
-            <Image>
-              <Location>
-                <p>{venue.location.city || "Unknown"}</p>
-              </Location>
-              {venue.media && venue.media.length > 0 && venue.media[0].url ? (
-                <img src={venue.media[0].url} alt={venue.name} />
-              ) : (
-                <Icons.PlaceholderImage />
-              )}
-            </Image>
-            <CardBody>
-              <Icon>
-                {venue.meta.pets ? <Icons.Pets /> : null}
-                {venue.meta.wifi ? <Icons.Wifi /> : null}
-                {venue.meta.parking ? <Icons.Parking /> : null}
-                {venue.meta.breakfast ? <Icons.Breakfast /> : null}
-              </Icon>
-              <Text>
-                <h3>{venue.name}</h3>
-                <p>
-                  {venue.location.address || "Unknown"}, {venue.location.city || "Unknown"}, {venue.location.country || "Unknown"}
-                </p>
-              </Text>
-              <Price>
-                <p>{venue.price} NOK</p>
-              </Price>
-            </CardBody>
-          </Card>
-        </Link>
-      ))}
+      {displayedVenues.map((venue) => {
+        const booking = bookings.find(booking => booking.venue.id === venue.id);
+        return (
+          <Link className="cardLink" key={venue.id} to={urlHandler(venue)}>
+            <Card>
+              <Image>
+                <Price>
+                  <p>{venue.price}Kr</p>
+                </Price>
+                {venue.media && venue.media.length > 0 && venue.media[0].url ? (
+                  <img src={venue.media[0].url} alt={venue.name} />
+                ) : (
+                  <Icons.PlaceholderImage />
+                )}
+                {selectedCategory === "bookings" && booking && (
+                  <Dates>
+                    <p>
+                      {new Date(booking.dateFrom).toLocaleDateString()} to {" "}
+                      {new Date(booking.dateTo).toLocaleDateString()}
+                    </p>
+                  </Dates>
+                )}
+                <CardBody>
+                  <h5>{venue.name}</h5>
+                  <h6>{venue.location.city || "Unknown"} | {venue.location.country || "Unknown"}</h6>
+                </CardBody>
+                <Gradient />
+              </Image>
+            </Card>
+          </Link>
+        );
+      })}
     </>
   );
 }

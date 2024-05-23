@@ -7,7 +7,7 @@ backdrop-filter: blur(2px);
 border-radius: 30px;
 width: 400px;
 height: auto;
-z-index: 1000;
+z-index: 10000;
 left: -500px;
 top: 73px;
 padding: 20px;
@@ -17,7 +17,7 @@ transition: 0.5s;
   left: 0;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 420px) {
   width: 100%;
   top: 20px;
 }

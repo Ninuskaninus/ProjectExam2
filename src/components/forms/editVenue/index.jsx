@@ -6,6 +6,7 @@ import FormBtn from "../../buttons/formBtn";
 import editVenue from "../../../js/put/editVenue.js";
 import Icons from "../../../images/index.jsx";
 import Loader from "../../loader";
+import AddBtn from "../../buttons/addBtn";
 
 export default function EditVenueForm() {
   const { myVenues } = useContext(AppContext);
@@ -53,6 +54,16 @@ export default function EditVenueForm() {
     setLoading(false);
   }
 
+    const handleLocationChange = (field, value) => {
+    setFormElements((prevState) => ({
+      ...prevState,
+      location: {
+        ...prevState.location,
+        [field]: value,
+      },
+    }));
+  };
+
   return (
     <Form>
       <FormItem>
@@ -73,23 +84,23 @@ export default function EditVenueForm() {
         <label>Price</label>
         <input
           value={formElements.price}
-          onChange={(e) => setFormElements({...formElements, price: (e.target.value)})}
+          onChange={(e) => setFormElements({...formElements, price: Number(e.target.value)})}
           type="number" />
       </FormItem>
       <FormItem>
         <label>Max Guests</label>
         <input
           value={formElements.maxGuests}
-          onChange={(e) => setFormElements({...formElements, maxGuests: (e.target.value)})}
+          onChange={(e) => setFormElements({...formElements, maxGuests: Number(e.target.value)})}
           type="number" />
       </FormItem>
       <h3>Images</h3>
         <FormItem>
         <label htmlFor="imageurl">Image Url</label>
         <input type="text" id="imageurl" />
-        <button type="button" onClick={pushImage}>
-          <Icons.Add />
-        </button>
+        <AddBtn type="button" onClick={pushImage} />
+         
+        
       </FormItem>
       <FormImageContainer className="imageContainer">
         {formElements.media.map((img, index) => (
@@ -112,38 +123,23 @@ export default function EditVenueForm() {
       <h3>Location</h3>
       <FormItem>
         <label>Address</label>
-        <input
-          value={formElements.location.address}
-          onChange={(e) => setFormElements({...formElements, address: e.target.value})}
-          type="text" />
+        <input value={formElements.location.address} onChange={(e) => handleLocationChange("address", e.target.value)} type="text" />
       </FormItem>
       <FormItem>
         <label>City</label>
-        <input
-          value={formElements.location.city}
-          onChange={(e) => setFormElements({...formElements, city: e.target.value})}
-          type="text" />
+        <input value={formElements.location.city} onChange={(e) => handleLocationChange("city", e.target.value)} type="text" />
       </FormItem>
       <FormItem>
         <label>Zip</label>
-        <input
-          value={formElements.location.zip}
-          onChange={(e) => setFormElements({...formElements, zip: e.target.value})}
-          type="text" />
+        <input value={formElements.location.zip} onChange={(e) => handleLocationChange("zip", e.target.value)} type="text" />
       </FormItem>
       <FormItem>
         <label>Country</label>
-        <input
-          value={formElements.location.country}
-          onChange={(e) => setFormElements({...formElements, country: e.target.value})}
-          type="text" />
+        <input value={formElements.location.country} onChange={(e) => handleLocationChange("country", e.target.value)} type="text" />
       </FormItem>
       <FormItem>
         <label>Continent</label>
-        <input
-          value={formElements.location.continent}
-          onChange={(e) => setFormElements({...formElements, continent: e.target.value})}
-          type="text" />
+        <input value={formElements.location.continent} onChange={(e) => handleLocationChange("continent", e.target.value)} type="text" />
       </FormItem>
       <FormBtnContainer>
         <FormBtn type="button" onClick={handleFormSubmit} Text="Save" />

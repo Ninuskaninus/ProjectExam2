@@ -16,9 +16,18 @@ export default async function BookVenue(booking) {
   try {
     const response = await fetch(url, options);
     const data = await response.json();
-    alert("Booking successful!");
+
+    if (response.ok) {
+      alert("Booking successful!");
+      window.location.href = "/";
+      window.location.reload();
+    } else {
+      alert(`Failed to book: ${data.message || "Unknown error"}`);
+    }
+
     return data;
   } catch (error) {
-    console.error(error);
+    console.error("Fetch error:", error);
+    alert("An error occurred while booking. Please try again.");
   }
 }

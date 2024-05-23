@@ -1,12 +1,24 @@
-import React from "react";
-import {SearchContainer, PageContainer, PageContent, Dashboard, CardContainer} from "./index.styles";
+import React, {useEffect} from "react";
+import { SearchContainer, DashboardBtn, PageContainer, PageContent, DashboardContainer, CardContainer } from "./index.styles";
 import VenueCard from "../../components/venueCard";
-import EditProfile from "../../components/modals/editProfile";
 import Hero from "../../components/hero";
 import SearchForm from "../../components/forms/searchform";
+import Dashboard from "../../components/dahsboard";
+import Icons from "../../images";
+
+const handleDashboard = () => {
+  const dashboard = document.getElementById("dashboardcontainer");
+  dashboard.classList.toggle("active");
+}
+const token = localStorage.getItem("token");
+
 
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "Holidaze | Home";
+  }, []);
+
   return (
     <PageContainer>
       <Hero />
@@ -14,10 +26,20 @@ export default function Home() {
         <SearchForm />
       </SearchContainer>
       <PageContent>
-        <Dashboard>Dashboard</Dashboard>
+        
+      {token && (
+        <>
+          <DashboardBtn id="dashboardBtn" onClick={handleDashboard}>
+            <Icons.Dashboard />
+          </DashboardBtn>
+            <DashboardContainer id="dashboardcontainer">
+              <Dashboard />
+          </DashboardContainer>
+        </>
+        )}
         <CardContainer>
           <VenueCard />
-        </CardContainer>
+          </CardContainer>
       </PageContent>
     </PageContainer>
   );
