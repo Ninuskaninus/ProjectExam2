@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { SearchContainer, DashboardBtn, PageContainer, PageContent, DashboardContainer, CardContainer } from "./index.styles";
+import { Cards, SearchContainer, DashboardBtn, PageContainer, PageContent, DashboardContainer, CardContainer } from "./index.styles";
 import VenueCard from "../../components/venueCard";
 import Hero from "../../components/hero";
 import SearchForm from "../../components/forms/searchform";
@@ -11,8 +11,6 @@ const handleDashboard = () => {
   dashboard.classList.toggle("active");
 }
 const token = localStorage.getItem("token");
-
-
 
 export default function Home() {
   useEffect(() => {
@@ -38,8 +36,11 @@ export default function Home() {
         </>
         )}
         <CardContainer>
-          <VenueCard />
-          </CardContainer>
+          <h1 id="venueHeading">All venues</h1>
+          <Cards>
+            <VenueCard />
+            </Cards>
+        </CardContainer>
       </PageContent>
     </PageContainer>
   );

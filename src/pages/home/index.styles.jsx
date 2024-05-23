@@ -75,7 +75,7 @@ img{
   &:hover{
     width: 92%;
     background-color: var(--rose);
-  
+  '
   }
 }
 `;
@@ -88,6 +88,12 @@ gap: 20px;
 flex-wrap: wrap;
 padding: 20px;
 justify-content: center;
+flex-direction: column;
+
+
+div{
+
+}
 
 
 
@@ -106,4 +112,11 @@ export const SearchContainer = styled.div`
 width: 100%;
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 padding: 0 50px;
+`;
+
+export const Cards = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 `;

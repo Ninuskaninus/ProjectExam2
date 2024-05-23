@@ -8,6 +8,7 @@ display: flex;
 justify-content: center;
 width: 100%;
 padding: 0 20px;
+
 `;
 
 export const NavContent = styled.div`
@@ -18,13 +19,6 @@ justify-content: space-between;
 height: 120px;
 align-items: center;
 
-button{
-  &:hover{
-    font-weight: bold;
-    cursor: pointer;
-  }
-}
-
 div{
   display: flex;
   align-items: flex-end;
@@ -34,22 +28,18 @@ div{
   img{
     height: 50px;
   }
+
+  @media (max-width: 430px){
+    img{
+      height: 20px;
+    }
+
+    h3{
+      font-size: 1.2rem;
+    }
+  }
   
 }
 `;
 
-export const NavSearch = styled.div`
-width: 100%;
-display: flex;
-justify-content: center;
-background-color: var(--primary);
-height: 70px;
-align-items: center;
-
-
-div{
-  max-width: 1200px;
-  width: 100%;
-}
-`;
 
