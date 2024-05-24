@@ -49,22 +49,19 @@ Holidaze has approached us to develop a brand new front end for their accommodat
 - [Hosted application demo link](https://holidaze-exam.netlify.app/)
 
 ### Setup and Installation
-1. **Clone the repository:**
+1. ***Clone the repository:***
    ```bash
    git clone https://github.com/Ninuskaninus/ProjectExam2.git
    cd holidaze
-  ```
 
-2. **Install dependencies:**
-```bash
-npm install
-```
+2. ***Install dependencies:***
+   ```bash
+   npm install
 
 3. ***Run the application:***
-```bash
-npm start
-```
-
+   ```bash
+   npm start
+   ```
 
 ### Hosting
 The application is hosted on Netlify: https://holidaze-exam.netlify.app/
