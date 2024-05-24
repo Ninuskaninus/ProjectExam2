@@ -1,8 +1,15 @@
-import React from "react";
-import {BtnBook} from "../index.styles";
+import React from 'react';
+import { BtnBook } from '../index.styles';
 
-export default function BookBtn({onClick, Text}) {
+export default function BookBtn({ onClick, Text, title, ariaLabel }) {
   return (
-    <BtnBook type="button" onClick={onClick}>{Text}</BtnBook>
+    <BtnBook
+      title={title}
+      aria-label={ariaLabel}
+      type="button"
+      onClick={onClick}
+    >
+      {Text}
+    </BtnBook>
   );
 }

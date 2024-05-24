@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
-  --primary: #3C435B;
-    --secondary: #282D3E;
-    --rose: #FBC0CF;
-    --wildYonder: #6D7AA6;
+  --primary: #3c435b;
+  --secondary: #282d3e;
+  --rose: #fbc0cf;
+  --wildYonder: #6d7aa6;
   --white: #fff;
   --error: #ffa59b;
-    --black: #131622;
+  --black: #131622;
 
   --mainFont: 'Montserrat', sans-serif;
-  --secondaryFont: "Montserrat Alternates", sans-serif;
+  --secondaryFont: 'Montserrat Alternates', sans-serif;
 
   --blur: backdrop-filter: blur(2px);
   --radius: border-radius: 30px;
@@ -21,46 +21,46 @@ button {
 
 body {
   background-color: var(--secondary);
-    font-family: var(--mainFont);
+  font-family: var(--mainFont);
   margin: 0;
   color: var(--white);
-    font-size: 16px;
-  }
-  
-  * {
-    box-sizing: border-box;
-    margin: 0;
-  }
-        button {
-          border: none;
-          background-color: transparent;
-          color: var(--white);
-          font-family: var(--mainFont);
-        }
-        a {
-          text-decoration: none;
-          color: var(--white);
-        }
-    
-        h1 {
-          color: var(--rose);
-            text-align: center;
-            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            font-family: var(--secondaryFont);
-              font-size: 3rem;
-              font-style: normal;
-              font-weight: 500;
-              line-height: normal;
-            }
-            
-            h2 {
-              color: var(--white);
-              font-family: var(--secondaryFont);
-              font-size: 3rem;
-              font-style: normal;
-              font-weight: 500;
-              line-height: normal;
-            }
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+button {
+  border: none;
+  background-color: transparent;
+  color: var(--white);
+  font-family: var(--mainFont);
+}
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+h1 {
+  color: var(--rose);
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: var(--secondaryFont);
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+h2 {
+  color: var(--white);
+  font-family: var(--secondaryFont);
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
 h3 {
   color: var(--white);
   font-family: var(--secondaryFont);
@@ -95,7 +95,6 @@ h6 {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-
 }
 
 .cardLink {

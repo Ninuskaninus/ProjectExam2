@@ -1,11 +1,15 @@
-import React, {useEffect} from "react";
-import { PageContainer, PageContent, FormContainer, FormHeader } from "../index.styles";
-import AddVenueForm from "../../components/forms/addvenue";
+import React, { useEffect } from 'react';
+import {
+  PageContainer,
+  PageContent,
+  FormContainer,
+  FormHeader,
+} from '../index.styles';
+import AddVenueForm from '../../components/forms/addvenue';
 
 export default function AddVenue() {
-
   useEffect(() => {
-    document.title = "Holidaze | Add Venue";
+    document.title = 'Holidaze | Add Venue';
   }, []);
 
   return (

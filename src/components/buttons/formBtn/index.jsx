@@ -1,8 +1,10 @@
-import React from "react";
-import {BtnForm} from "../index.styles";
+import React from 'react';
+import { BtnForm } from '../index.styles';
 
-export default function FormBtn({ Text, onClick, type }) {
+export default function FormBtn({ Text, onClick, type, title, ariaLabel }) {
   return (
-    <BtnForm onClick={onClick} type={type}>{Text}</BtnForm>
+    <BtnForm title={title} aria-label={ariaLabel} onClick={onClick} type={type}>
+      {Text}
+    </BtnForm>
   );
 }

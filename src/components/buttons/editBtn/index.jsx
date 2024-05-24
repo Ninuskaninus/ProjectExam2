@@ -1,8 +1,10 @@
-import React from "react";
-import {BtnEdit} from "../index.styles";
+import React from 'react';
+import { BtnEdit } from '../index.styles';
 
-export default function EditVenueBtn({onClick}) {
+export default function EditVenueBtn({ onClick }) {
   return (
-    <BtnEdit onClick={onClick}>Edit</BtnEdit>
+    <BtnEdit title="Edit" aria-label="Edit" onClick={onClick}>
+      Edit
+    </BtnEdit>
   );
 }

@@ -1,14 +1,20 @@
-import React, { useContext } from "react";
-import { DashboardItem, DashboardContainer, DashboardHead, DashboardBody, DashboardFooter } from "./index.styles";
-import Icons from "../../images";
-import { Link } from "react-router-dom";
-import { AppContext } from "../../contexts/provider";
-import Loader from "../loader/index.jsx";
-import EditProfileForm from "../forms/editProfile/index.jsx";
+import React, { useContext } from 'react';
+import {
+  DashboardItem,
+  DashboardContainer,
+  DashboardHead,
+  DashboardBody,
+  DashboardFooter,
+} from './index.styles';
+import Icons from '../../images';
+import { Link } from 'react-router-dom';
+import { AppContext } from '../../contexts/provider';
+import Loader from '../loader/index.jsx';
+import EditProfileForm from '../forms/editProfile/index.jsx';
 
 export default function Dashboard() {
   const { setSelectedCategory, profile, loading } = useContext(AppContext);
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
 
   if (loading) {
     return <Loader />;
@@ -22,26 +28,30 @@ export default function Dashboard() {
   let noVenues = profile.venues && profile.venues.length === 0;
 
   const editProfile = () => {
-    const dashboard = document.getElementById("editProfileForm");
-    dashboard.classList.toggle("show");
-  }
+    const dashboard = document.getElementById('editProfileForm');
+    dashboard.classList.toggle('show');
+  };
 
   const handleLogout = () => {
     localStorage.clear();
     window.location.reload();
-  }
+  };
 
   return (
     <>
       <DashboardContainer>
         <DashboardHead>
-          {profile.avatar?.url ? <img src={profile.avatar.url} alt="avatar" /> : <Icons.PlaceholderAvatar />}
+          {profile.avatar?.url ? (
+            <img src={profile.avatar.url} alt="avatar" />
+          ) : (
+            <Icons.PlaceholderAvatar />
+          )}
           <h5>{profile.name}</h5>
         </DashboardHead>
         <DashboardBody>
           <h5>Dashboard</h5>
           <DashboardItem
-            onClick={() => setSelectedCategory("bookings")}
+            onClick={() => setSelectedCategory('bookings')}
             className={noBookings ? 'disabled' : ''}
             disabled={noBookings}
           >
@@ -50,7 +60,7 @@ export default function Dashboard() {
             <span>({profile.bookings.length || 0})</span>
           </DashboardItem>
           <DashboardItem
-            onClick={() => setSelectedCategory("myVenues")}
+            onClick={() => setSelectedCategory('myVenues')}
             className={noVenues ? 'disabled' : ''}
             disabled={noVenues}
           >
@@ -58,7 +68,7 @@ export default function Dashboard() {
             <p>My venues</p>
             <span>({profile.venues.length || 0})</span>
           </DashboardItem>
-          <DashboardItem onClick={() => setSelectedCategory("all")}>
+          <DashboardItem onClick={() => setSelectedCategory('all')}>
             <Icons.Cards />
             <p>All venues</p>
           </DashboardItem>

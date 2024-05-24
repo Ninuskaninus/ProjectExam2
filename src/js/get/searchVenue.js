@@ -5,7 +5,7 @@ export default async function searchVenue(search) {
 
   const data = results.data;
   if (data.length === 0) {
-    alert("No venues found, please try another search.");
+    alert('No venues found, please try another search.');
   }
 
   return data;

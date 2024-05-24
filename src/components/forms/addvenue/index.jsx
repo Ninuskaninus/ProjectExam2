@@ -1,14 +1,21 @@
-import React, { useState } from "react";
-import { ErrorMessage, Form, FormItem, FormImageContainer, FormItemCheckbox, FormBtnContainer } from "../index.styles";
-import FormBtn from "../../buttons/formBtn";
-import Icons from "../../../images";
-import addVenue from "../../../js/post/addVenue.js";
-import AddBtn from "../../buttons/addBtn/index.jsx";
+import React, { useState } from 'react';
+import {
+  ErrorMessage,
+  Form,
+  FormItem,
+  FormImageContainer,
+  FormItemCheckbox,
+  FormBtnContainer,
+} from '../index.styles';
+import FormBtn from '../../buttons/formBtn';
+import Icons from '../../../images';
+import addVenue from '../../../js/post/addVenue.js';
+import AddBtn from '../../buttons/addBtn/index.jsx';
 
 export default function AddVenueForm() {
   const [formElement, setFormElements] = useState({
-    name: "",
-    description: "",
+    name: '',
+    description: '',
     media: [],
     price: 0,
     maxGuests: 0,
@@ -19,22 +26,22 @@ export default function AddVenueForm() {
       pets: false,
     },
     location: {
-      address: "",
-      city: "",
-      zip: "",
-      country: "",
-      continent: "",
+      address: '',
+      city: '',
+      zip: '',
+      country: '',
+      continent: '',
     },
   });
 
-  const [error, setError] = useState(null); // Add state for error messages
+  const [error, setError] = useState(null);
 
   const pushImage = () => {
-    const imageurl = document.getElementById("imageurl").value;
+    const imageurl = document.getElementById('imageurl').value;
     if (imageurl) {
       const newImage = {
         url: imageurl,
-        alt: "",
+        alt: '',
       };
 
       setFormElements((prevState) => ({
@@ -42,7 +49,7 @@ export default function AddVenueForm() {
         media: [...prevState.media, newImage],
       }));
 
-      document.getElementById("imageurl").value = ""; 
+      document.getElementById('imageurl').value = '';
     }
   };
 
@@ -50,14 +57,15 @@ export default function AddVenueForm() {
     e.preventDefault();
     const error = await addVenue(formElement);
     if (error) {
-      setError(error); // Update error state if there's an error
+      setError(error);
     }
   };
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
-    const parsedValue = id === "price" || id === "maxGuests" ? parseInt(value, 10) : value;
-    if (id === "price" || id === "maxGuests") {
+    const parsedValue =
+      id === 'price' || id === 'maxGuests' ? parseInt(value, 10) : value;
+    if (id === 'price' || id === 'maxGuests') {
       if (isNaN(parsedValue)) return;
     }
     setFormElements((prevState) => ({
@@ -113,7 +121,7 @@ export default function AddVenueForm() {
       <FormItem>
         <label htmlFor="imageurl">Image Url</label>
         <input type="text" id="imageurl" />
-        <AddBtn onClick={pushImage}/>
+        <AddBtn onClick={pushImage} />
       </FormItem>
       <FormImageContainer className="imageContainer">
         {formElement.media.map((img, index) => (
@@ -144,7 +152,9 @@ export default function AddVenueForm() {
           onChange={handleInputChange}
         />
       </FormItem>
-      {error && <ErrorMessage>Must be more than 1 and no more than 10.000</ErrorMessage>} 
+      {error && (
+        <ErrorMessage>Must be more than 1 and no more than 10.000</ErrorMessage>
+      )}
       <FormItem>
         <label htmlFor="maxGuests">Max guests</label>
         <input
@@ -156,7 +166,11 @@ export default function AddVenueForm() {
           onChange={handleInputChange}
         />
       </FormItem>
-      {error && <ErrorMessage>Need to have room for one or more. And no more than 100</ErrorMessage>} 
+      {error && (
+        <ErrorMessage>
+          Need to have room for one or more. And no more than 100
+        </ErrorMessage>
+      )}
       <h3>Ammenities</h3>
       {['parking', 'breakfast', 'wifi', 'pets'].map((amenity) => (
         <FormItemCheckbox key={amenity}>
@@ -166,13 +180,17 @@ export default function AddVenueForm() {
             checked={formElement.meta[amenity]}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor={amenity}>{amenity.charAt(0).toUpperCase() + amenity.slice(1)}</label>
+          <label htmlFor={amenity}>
+            {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
+          </label>
         </FormItemCheckbox>
       ))}
       <h3>Location</h3>
       {['address', 'city', 'zip', 'country', 'continent'].map((field) => (
         <FormItem key={field}>
-          <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+          <label htmlFor={field}>
+            {field.charAt(0).toUpperCase() + field.slice(1)}
+          </label>
           <input
             type="text"
             id={field}
@@ -182,7 +200,12 @@ export default function AddVenueForm() {
         </FormItem>
       ))}
       <FormBtnContainer>
-        <FormBtn Text="Add Venue" type="submit" />
+        <FormBtn
+          title="Add Venue"
+          ariaLabel="Add Venue"
+          Text="Add Venue"
+          type="submit"
+        />
       </FormBtnContainer>
     </Form>
   );

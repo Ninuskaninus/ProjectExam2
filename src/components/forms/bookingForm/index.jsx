@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { Form, FormItem, FormBtnContainer, TotalPrice } from "../index.styles";
-import BookBtn from "../../buttons/bookBtn/index.jsx";
-import { useParams } from "react-router-dom";
-import BookVenue from "../../../js/post/bookVenue.js";
+import React, { useState, useEffect } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { Form, FormItem, FormBtnContainer, TotalPrice } from '../index.styles';
+import BookBtn from '../../buttons/bookBtn/index.jsx';
+import { useParams } from 'react-router-dom';
+import BookVenue from '../../../js/post/bookVenue.js';
 
 export default function BookingForm({ venue }) {
   const { id } = useParams();
@@ -18,11 +18,11 @@ export default function BookingForm({ venue }) {
     guests: 0,
   });
 
-    useEffect(() => {
+  useEffect(() => {
     if (startDate && endDate) {
-      const days = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)); 
+      const days = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
       const total = days * venue.price;
-      setTotalPrice(total); 
+      setTotalPrice(total);
     }
   }, [startDate, endDate, booking.guests, venue.price]);
 
@@ -107,7 +107,12 @@ export default function BookingForm({ venue }) {
         <h3>Total: {totalPrice} NOK </h3>
       </TotalPrice>
       <FormBtnContainer>
-        <BookBtn Text="Book now!" onClick={handleSubmit} />
+        <BookBtn
+          ariaLabel="Book venue"
+          title="book venue"
+          Text="Book now!"
+          onClick={handleSubmit}
+        />
       </FormBtnContainer>
     </>
   );

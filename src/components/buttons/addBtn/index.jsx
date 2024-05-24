@@ -1,8 +1,15 @@
-import React from "react";
-import {BtnAdd} from "../index.styles";
+import React from 'react';
+import { BtnAdd } from '../index.styles';
 
 export default function AddBtn({ onClick }) {
   return (
-    <BtnAdd type="button" onClick={onClick}>Add</BtnAdd>
+    <BtnAdd
+      title="Add image"
+      aria-label="Add image"
+      type="button"
+      onClick={onClick}
+    >
+      Add
+    </BtnAdd>
   );
 }

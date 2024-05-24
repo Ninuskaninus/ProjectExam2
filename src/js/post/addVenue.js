@@ -1,14 +1,14 @@
 export default async function addVenue(formElement) {
-  const url = "https://v2.api.noroff.dev/holidaze/venues";
-  const token = localStorage.getItem("token");
-  const apiKey = localStorage.getItem("apiKey");
+  const url = 'https://v2.api.noroff.dev/holidaze/venues';
+  const token = localStorage.getItem('token');
+  const apiKey = localStorage.getItem('apiKey');
 
   const options = {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
-      "X-Noroff-API-Key": apiKey,
+      'X-Noroff-API-Key': apiKey,
     },
     body: JSON.stringify(formElement),
   };
@@ -18,22 +18,22 @@ export default async function addVenue(formElement) {
     const json = await response.json();
 
     if (response.ok) {
-      alert("Venue added successfully");
-      window.location.href = "/";
+      alert('Venue added successfully');
+      window.location.href = '/';
     } else {
-      console.error("Error response:", {
+      console.error('Error response:', {
         status: response.status,
         statusText: response.statusText,
         body: json,
       });
-      return json; 
+      return json;
     }
   } catch (error) {
-    console.error("Fetch error:", {
+    console.error('Fetch error:', {
       message: error.message,
       name: error.name,
       stack: error.stack,
     });
-    return { message: error.message }; 
+    return { message: error.message };
   }
 }

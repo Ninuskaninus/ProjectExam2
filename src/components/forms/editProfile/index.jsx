@@ -1,22 +1,21 @@
-import React, {useState} from "react";
-import {EditForm, EditFormItem, FormBtnContainer} from "../index.styles";
-import FormBtn from "../../buttons/formBtn";
-import editProfile from "../../../js/put/editprofile";
+import React, { useState } from 'react';
+import { EditForm, EditFormItem, FormBtnContainer } from '../index.styles';
+import FormBtn from '../../buttons/formBtn';
+import editProfile from '../../../js/put/editprofile';
 
 export default function EditProfileForm() {
   const [profile, setProfile] = useState({
-    bio: "",
+    bio: '',
     avatar: {
-      url: "",
-      alt: ""
+      url: '',
+      alt: '',
     },
   });
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     await editProfile(profile);
-  }
-
+  };
 
   return (
     <EditForm id="editProfileForm">
@@ -24,12 +23,16 @@ export default function EditProfileForm() {
         <label htmlFor="avatar">Avatar Url</label>
         <input
           onChange={(e) => {
-            setProfile({ ...profile, avatar: { ...profile.avatar, url: e.target.value } });
+            setProfile({
+              ...profile,
+              avatar: { ...profile.avatar, url: e.target.value },
+            });
           }}
           value={profile.avatar.url}
           type="text"
           name="avatar"
-          id="avatar" />
+          id="avatar"
+        />
       </EditFormItem>
       <EditFormItem>
         <label htmlFor="bio">Bio</label>
@@ -40,7 +43,8 @@ export default function EditProfileForm() {
           value={profile.bio}
           type="textarea"
           name="bio"
-          id="bio" />
+          id="bio"
+        />
       </EditFormItem>
       <FormBtnContainer>
         <FormBtn onClick={handleFormSubmit} Text="Save" />
