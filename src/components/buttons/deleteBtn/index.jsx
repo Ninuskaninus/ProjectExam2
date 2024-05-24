@@ -1,10 +1,10 @@
-import React from "react";
-import {BtnDelete} from "../index.styles";
+import React from 'react';
+import { BtnDelete } from '../index.styles';
 
-export default function DeleteBtn({onClick}) {
-
+export default function DeleteBtn({ onClick }) {
   return (
-    <BtnDelete onClick={onClick}>Delete</BtnDelete>
+    <BtnDelete title="Delete" aria-label="Delete" onClick={onClick}>
+      Delete
+    </BtnDelete>
   );
 }
-  

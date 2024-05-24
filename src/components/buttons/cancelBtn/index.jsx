@@ -1,5 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export default function CancelBtn({ onClick }) {
-  return <button onClick={onClick}>Cancel</button>;
+  return (
+    <button title="Cancel" aria-label="Cancel" onClick={onClick}>
+      Cancel
+    </button>
+  );
 }

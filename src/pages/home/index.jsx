@@ -1,35 +1,43 @@
-import React, { useEffect, useContext, useState } from "react";
-import { Cards, SearchContainer, DashboardBtn, PageContainer, PageContent, DashboardContainer, CardContainer } from "./index.styles";
-import VenueCard from "../../components/venueCard";
-import Hero from "../../components/hero";
-import SearchForm from "../../components/forms/searchform";
-import Dashboard from "../../components/dahsboard";
-import Icons from "../../images";
-import { AppContext } from "../../contexts/provider";
+import React, { useEffect, useContext, useState } from 'react';
+import {
+  Cards,
+  SearchContainer,
+  DashboardBtn,
+  PageContainer,
+  PageContent,
+  DashboardContainer,
+  CardContainer,
+} from './index.styles';
+import VenueCard from '../../components/venueCard';
+import Hero from '../../components/hero';
+import SearchForm from '../../components/forms/searchform';
+import Dashboard from '../../components/dahsboard';
+import Icons from '../../images';
+import { AppContext } from '../../contexts/provider';
 
 const handleDashboard = () => {
-  const dashboard = document.getElementById("dashboardcontainer");
-  dashboard.classList.toggle("active");
+  const dashboard = document.getElementById('dashboardcontainer');
+  dashboard.classList.toggle('active');
 };
 
-const token = localStorage.getItem("token");
+const token = localStorage.getItem('token');
 
 export default function Home() {
   const { searchedVenues, selectedCategory } = useContext(AppContext);
-  const [headingText, setHeadingText] = useState("All Venues");
+  const [headingText, setHeadingText] = useState('All Venues');
 
   useEffect(() => {
-    document.title = "Holidaze | Home";
+    document.title = 'Holidaze | Home';
   }, []);
 
   useEffect(() => {
-    let newHeading = "All Venues";
+    let newHeading = 'All Venues';
     if (searchedVenues.length > 0) {
-      newHeading = "Search Results";
-    } else if (selectedCategory === "bookings") {
-      newHeading = "My Bookings";
-    } else if (selectedCategory === "myVenues") {
-      newHeading = "My Venues";
+      newHeading = 'Search Results';
+    } else if (selectedCategory === 'bookings') {
+      newHeading = 'My Bookings';
+    } else if (selectedCategory === 'myVenues') {
+      newHeading = 'My Venues';
     }
     setHeadingText(newHeading);
   }, [searchedVenues, selectedCategory]);

@@ -1,49 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   Form,
   FormItem,
   FormBtnContainer,
   FormItemCheckbox,
   ErrorMessage,
-} from "../index.styles";
-import Icons from "../../../images/index";
-import FormBtn from "../../buttons/formBtn";
-import register from "../../../js/post/createUser.js";
+} from '../index.styles';
+import Icons from '../../../images/index';
+import FormBtn from '../../buttons/formBtn';
+import register from '../../../js/post/createUser.js';
 
 export default function CreateAccountForm() {
   const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
     venueManager: false,
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    document.title = "Holidaze | Create account";
+    document.title = 'Holidaze | Create account';
   }, []);
 
   const handleCreateUser = async (e) => {
     e.preventDefault();
-    setError(""); 
+    setError('');
 
     if (!user.name || !user.email || !user.password) {
-      setError("Please fill in all fields");
-      document.getElementById("usernameLabel").classList.add("error");
-      document.getElementById("emailLabel").classList.add("error");
-      document.getElementById("passwordLabel").classList.add("error");
+      setError('Please fill in all fields');
+      document.getElementById('usernameLabel').classList.add('error');
+      document.getElementById('emailLabel').classList.add('error');
+      document.getElementById('passwordLabel').classList.add('error');
       return;
     }
 
     if (user.password.length < 8) {
-      setError("Password must be at least 8 characters long");
-      document.getElementById("passwordLabel").classList.add("error");
+      setError('Password must be at least 8 characters long');
+      document.getElementById('passwordLabel').classList.add('error');
       return;
     }
 
-    if (!user.email.includes("@") || !user.email.endsWith("stud.noroff.no")) {
-      setError("Please enter a valid email address");
-      document.getElementById("emailLabel").classList.add("error");
+    if (!user.email.includes('@') || !user.email.endsWith('stud.noroff.no')) {
+      setError('Please enter a valid email address');
+      document.getElementById('emailLabel').classList.add('error');
       return;
     }
 
@@ -51,7 +51,7 @@ export default function CreateAccountForm() {
       const data = await register(user);
 
       if (!data) {
-        setError("An error occurred. Please try again later");
+        setError('An error occurred. Please try again later');
       } else {
         console.log('User registered successfully:', data);
       }
@@ -61,7 +61,7 @@ export default function CreateAccountForm() {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       handleCreateUser(e);
     }
   };
@@ -113,13 +113,16 @@ export default function CreateAccountForm() {
           onChange={(e) => setUser({ ...user, venueManager: e.target.checked })}
           type="checkbox"
         />
-        <label htmlFor="">
-          I want to be venue manager*
-        </label>
+        <label htmlFor="">I want to be venue manager*</label>
       </FormItemCheckbox>
       {error && <ErrorMessage>{error}</ErrorMessage>}
       <FormBtnContainer>
-        <FormBtn onClick={handleCreateUser} Text="Create account" />
+        <FormBtn
+          title="Create account"
+          ariaLabel="Create account"
+          onClick={handleCreateUser}
+          Text="Create account"
+        />
       </FormBtnContainer>
     </Form>
   );

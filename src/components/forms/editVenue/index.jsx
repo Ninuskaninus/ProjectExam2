@@ -1,12 +1,18 @@
-import React, {useContext, useState} from "react";
-import {Form, FormItem, FormBtnContainer, FormImageContainer, FormItemCheckbox} from "../index.styles";
-import { AppContext } from "../../../contexts/provider";
-import { useParams } from "react-router-dom";
-import FormBtn from "../../buttons/formBtn";
-import editVenue from "../../../js/put/editVenue.js";
-import Icons from "../../../images/index.jsx";
-import Loader from "../../loader";
-import AddBtn from "../../buttons/addBtn";
+import React, { useContext, useState } from 'react';
+import {
+  Form,
+  FormItem,
+  FormBtnContainer,
+  FormImageContainer,
+  FormItemCheckbox,
+} from '../index.styles';
+import { AppContext } from '../../../contexts/provider';
+import { useParams } from 'react-router-dom';
+import FormBtn from '../../buttons/formBtn';
+import editVenue from '../../../js/put/editVenue.js';
+import Icons from '../../../images/index.jsx';
+import Loader from '../../loader';
+import AddBtn from '../../buttons/addBtn';
 
 export default function EditVenueForm() {
   const { myVenues } = useContext(AppContext);
@@ -17,14 +23,13 @@ export default function EditVenueForm() {
     name: venue.name,
     description: venue.description,
     price: venue.price,
-    location: 
-      {
-        address: venue.location.address,
-        city: venue.location.city,
-        zip: venue.location.zip,
-        country: venue.location.country,
-        continent: venue.location.continent,
-      },
+    location: {
+      address: venue.location.address,
+      city: venue.location.city,
+      zip: venue.location.zip,
+      country: venue.location.country,
+      continent: venue.location.continent,
+    },
     maxGuests: venue.maxGuests,
     media: [...venue.media],
     meta: {
@@ -32,19 +37,19 @@ export default function EditVenueForm() {
       parking: venue.meta.parking,
       breakfast: venue.meta.breakfast,
       pets: venue.meta.pets,
-    }
+    },
   });
 
-    if (loading) {
+  if (loading) {
     return <Loader />;
   }
 
-    const pushImage = () => {
-    const imageurl = document.getElementById("imageurl").value;
+  const pushImage = () => {
+    const imageurl = document.getElementById('imageurl').value;
     if (imageurl) {
       const newImage = {
         url: imageurl,
-        alt: "",
+        alt: '',
       };
 
       setFormElements((prevState) => ({
@@ -52,7 +57,7 @@ export default function EditVenueForm() {
         media: [...prevState.media, newImage],
       }));
 
-      document.getElementById("imageurl").value = ""; 
+      document.getElementById('imageurl').value = '';
     }
   };
 
@@ -61,9 +66,9 @@ export default function EditVenueForm() {
     setLoading(true);
     editVenue(id, formElements);
     setLoading(false);
-  }
+  };
 
-    const handleLocationChange = (field, value) => {
+  const handleLocationChange = (field, value) => {
     setFormElements((prevState) => ({
       ...prevState,
       location: {
@@ -79,37 +84,50 @@ export default function EditVenueForm() {
         <label>Venue Name</label>
         <input
           value={formElements.name}
-          onChange={(e) => setFormElements({...formElements, name: e.target.value})}
-          type="text" />
+          onChange={(e) =>
+            setFormElements({ ...formElements, name: e.target.value })
+          }
+          type="text"
+        />
       </FormItem>
       <FormItem>
         <label>Description</label>
         <textarea
           value={formElements.description}
-          onChange={(e) => setFormElements({...formElements, description: e.target.value})}
-          type="text" />
+          onChange={(e) =>
+            setFormElements({ ...formElements, description: e.target.value })
+          }
+          type="text"
+        />
       </FormItem>
       <FormItem>
         <label>Price</label>
         <input
           value={formElements.price}
-          onChange={(e) => setFormElements({...formElements, price: Number(e.target.value)})}
-          type="number" />
+          onChange={(e) =>
+            setFormElements({ ...formElements, price: Number(e.target.value) })
+          }
+          type="number"
+        />
       </FormItem>
       <FormItem>
         <label>Max Guests</label>
         <input
           value={formElements.maxGuests}
-          onChange={(e) => setFormElements({...formElements, maxGuests: Number(e.target.value)})}
-          type="number" />
+          onChange={(e) =>
+            setFormElements({
+              ...formElements,
+              maxGuests: Number(e.target.value),
+            })
+          }
+          type="number"
+        />
       </FormItem>
       <h4>Images</h4>
-        <FormItem>
+      <FormItem>
         <label htmlFor="imageurl">Image Url</label>
         <input type="text" id="imageurl" />
         <AddBtn type="button" onClick={pushImage} />
-         
-        
       </FormItem>
       <FormImageContainer className="imageContainer">
         {formElements.media.map((img, index) => (
@@ -134,7 +152,12 @@ export default function EditVenueForm() {
         <input
           type="checkbox"
           checked={formElements.meta.wifi}
-          onChange={(e) => setFormElements({ ...formElements, meta: { ...formElements.meta, wifi: e.target.checked } })}
+          onChange={(e) =>
+            setFormElements({
+              ...formElements,
+              meta: { ...formElements.meta, wifi: e.target.checked },
+            })
+          }
         />
         <label>Wifi</label>
       </FormItemCheckbox>
@@ -142,7 +165,12 @@ export default function EditVenueForm() {
         <input
           type="checkbox"
           checked={formElements.meta.parking}
-          onChange={(e) => setFormElements({ ...formElements, meta: { ...formElements.meta, parking: e.target.checked } })}
+          onChange={(e) =>
+            setFormElements({
+              ...formElements,
+              meta: { ...formElements.meta, parking: e.target.checked },
+            })
+          }
         />
         <label>Parking</label>
       </FormItemCheckbox>
@@ -150,7 +178,12 @@ export default function EditVenueForm() {
         <input
           type="checkbox"
           checked={formElements.meta.breakfast}
-          onChange={(e) => setFormElements({ ...formElements, meta: { ...formElements.meta, breakfast: e.target.checked } })}
+          onChange={(e) =>
+            setFormElements({
+              ...formElements,
+              meta: { ...formElements.meta, breakfast: e.target.checked },
+            })
+          }
         />
         <label>Breakfast</label>
       </FormItemCheckbox>
@@ -158,33 +191,64 @@ export default function EditVenueForm() {
         <input
           type="checkbox"
           checked={formElements.meta.pets}
-          onChange={(e) => setFormElements({ ...formElements, meta: { ...formElements.meta, pets: e.target.checked } })}
+          onChange={(e) =>
+            setFormElements({
+              ...formElements,
+              meta: { ...formElements.meta, pets: e.target.checked },
+            })
+          }
         />
         <label>Pets</label>
       </FormItemCheckbox>
       <h4>Location</h4>
       <FormItem>
         <label>Address</label>
-        <input value={formElements.location.address} onChange={(e) => handleLocationChange("address", e.target.value)} type="text" />
+        <input
+          value={formElements.location.address}
+          onChange={(e) => handleLocationChange('address', e.target.value)}
+          type="text"
+        />
       </FormItem>
       <FormItem>
         <label>City</label>
-        <input value={formElements.location.city} onChange={(e) => handleLocationChange("city", e.target.value)} type="text" />
+        <input
+          value={formElements.location.city}
+          onChange={(e) => handleLocationChange('city', e.target.value)}
+          type="text"
+        />
       </FormItem>
       <FormItem>
         <label>Zip</label>
-        <input value={formElements.location.zip} onChange={(e) => handleLocationChange("zip", e.target.value)} type="text" />
+        <input
+          value={formElements.location.zip}
+          onChange={(e) => handleLocationChange('zip', e.target.value)}
+          type="text"
+        />
       </FormItem>
       <FormItem>
         <label>Country</label>
-        <input value={formElements.location.country} onChange={(e) => handleLocationChange("country", e.target.value)} type="text" />
+        <input
+          value={formElements.location.country}
+          onChange={(e) => handleLocationChange('country', e.target.value)}
+          type="text"
+        />
       </FormItem>
       <FormItem>
         <label>Continent</label>
-        <input value={formElements.location.continent} onChange={(e) => handleLocationChange("continent", e.target.value)} type="text" />
+        <input
+          value={formElements.location.continent}
+          onChange={(e) => handleLocationChange('continent', e.target.value)}
+          type="text"
+        />
       </FormItem>
       <FormBtnContainer>
-        <FormBtn type="button" onClick={handleFormSubmit} Text="Save" />
+        <FormBtn
+          ariaLabel="Save"
+          title="Save"
+          type="button"
+          onClick={handleFormSubmit}
+          Text="Save"
+        />
       </FormBtnContainer>
     </Form>
   );

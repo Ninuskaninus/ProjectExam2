@@ -1,21 +1,21 @@
-import React from "react";
-import { CarouselContainer } from "./index.styles";
-import Slider from "react-slick";
+import React from 'react';
+import { CarouselContainer } from './index.styles';
+import Slider from 'react-slick';
 
 export default function VenueCarousel({ media }) {
   const settings = {
     dots: true,
-    infinite: media.length > 1, 
+    infinite: media.length > 1,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   };
 
   if (media.length === 1) {
     return (
       <CarouselContainer>
         <div>
-          <img src={media[0].url} alt={media[0].alt || "Venue Image"} />
+          <img src={media[0].url} alt={media[0].alt || 'Venue Image'} />
         </div>
       </CarouselContainer>
     );
